@@ -31,7 +31,7 @@ const Login = () => {
 
       // Arahkan berdasarkan email admin
       if (email === "admin@gmail.com") {
-        navigate("/dashboard"); // atau "/admin/dashboard" jika path-nya begitu
+        navigate("/dashboard-admin"); // atau "/admin/dashboard" jika path-nya begitu
       } else {
         navigate("/user/dashboard");
       }
@@ -47,7 +47,7 @@ const Login = () => {
       localStorage.setItem("role", "admin");
       localStorage.setItem("adminEmail", email);
 
-      navigate("/dashboard");
+      navigate("/dashboard-admin");
     } else {
       alert("Login failed: " + err.message);
     }

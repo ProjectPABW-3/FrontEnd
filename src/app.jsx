@@ -2,8 +2,11 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./MainLayout/login";
 import Signup from "./MainLayout/signup";
 import Home from "./MainLayout/homepage";
+import Navbarhome from "./components/navbar/navbarhome";
+import Footer from "./components/footer/footer";
+import ProfilSetting from "./MainLayout/profilSetting";
+import DashboardMitra from "./MainLayout/mitra/dashboardMitra";
 import AdminDashboard from "./MainLayout/admin/AdminDashboard";
-//import EmoneyPage from './MainLayout/emoney/emoney';
 import Users from "./MainLayout/admin/UserManagement";
 import ProductManagement from "./MainLayout/admin/ProductManagement";
 
@@ -14,8 +17,11 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/dashboard" element={<AdminDashboard />}/>
-        <Route path="/emoney" element={< emoney/>}/>
+        <Route path="/navbarhome" element={<Navbarhome />} />
+        <Route path="/footer" element={<Footer />} />
+        <Route path="/profil/setting" element={<ProfilSetting />} />
+        <Route path="/dashboard-mitra" element={<DashboardMitra />} />
+        <Route path="/dashboard-admin" element={<AdminDashboard />}/>
         <Route path="/UserManagement" element={<Users />} />
         <Route path="/ProductManagement" element={<ProductManagement />} />
         {/* tambahkan route lainnya jika perlu */}

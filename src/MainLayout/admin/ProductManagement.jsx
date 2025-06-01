@@ -112,7 +112,7 @@ const ProductManagement = () => {
         <nav className="p-6">
           <ul className="space-y-4">
             <li>
-              <a href="/dashboard" 
+              <a href="/dashboard-admin" 
               className={({ isActive }) =>
                 `text-gray-700 hover:text-blue-600 ${
                   isActive ? "font-bold text-blue-600" : ""
