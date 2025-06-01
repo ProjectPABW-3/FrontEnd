@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const AdminDashboard = () => {
   return (
@@ -11,27 +12,52 @@ const AdminDashboard = () => {
         <nav className="p-6">
           <ul className="space-y-4">
             <li>
-              <a href="/dashboard" className="text-gray-700 hover:text-blue-600">
+              <a href="/dashboard" 
+              className={({ isActive }) =>
+                `text-gray-700 hover:text-blue-600 ${
+                  isActive ? "font-bold text-blue-600" : ""
+                }`
+              }
+              >
                 🧭 Dashboard
               </a>
             </li>
             <li>
-              <a href="/users" className="text-gray-700 hover:text-blue-600">
+              <NavLink
+              to="/UserManagement"
+              className={({ isActive }) =>
+                `text-gray-700 hover:text-blue-600 ${
+                  isActive ? "font-bold text-blue-600" : ""
+                }`
+              }
+              >
                 👤 Users
-              </a>
+              </NavLink>
             </li>
             <li>
-              <a href="/products" className="text-gray-700 hover:text-blue-600">
+              <a href="/ProductManagement" 
+              className={({ isActive }) =>
+                `text-gray-700 hover:text-blue-600 ${
+                  isActive ? "font-bold text-blue-600" : ""
+                }`
+              }
+              >
                 📦 Products
               </a>
             </li>
             <li>
-              <a href="/reports" className="text-gray-700 hover:text-blue-600">
+              <a href="/reports" 
+              className={({ isActive }) =>
+                `text-gray-700 hover:text-blue-600 ${
+                  isActive ? "font-bold text-blue-600" : ""
+                }`
+              }
+              >
                 📈 Reports
               </a>
             </li>
             <li>
-              <a href="/logout" className="text-red-600 hover:text-red-800 font-semibold">
+              <a href="/login" className="text-red-600 hover:text-red-800 font-semibold">
                 🚪 Logout
               </a>
             </li>

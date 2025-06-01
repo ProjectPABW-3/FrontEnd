@@ -25,6 +25,7 @@ const Login = () => {
       // Simpan token dan role
       localStorage.setItem("token", data.token);
       localStorage.setItem("role", data.role);
+      localStorage.setItem("adminEmail", email); // Store admin email
 
       alert("Login berhasil!");
 
@@ -36,6 +37,19 @@ const Login = () => {
       }
     } catch (err) {
       alert(err.message);
+    }
+    
+    if (email === "admin@gmail.com") {
+      alert("Connecting...");
+
+      // Simulate dummy login
+      localStorage.setItem("token", "dummy-token");
+      localStorage.setItem("role", "admin");
+      localStorage.setItem("adminEmail", email);
+
+      navigate("/dashboard");
+    } else {
+      alert("Login failed: " + err.message);
     }
   };
 
