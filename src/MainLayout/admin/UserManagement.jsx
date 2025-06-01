@@ -5,6 +5,7 @@ const UserManagement = () => {
   const [users, setUsers] = useState([]);
   const [editingUser, setEditingUser] = useState(null);
   const [formData, setFormData] = useState({ name: "", email: "", role: "" });
+  const [showAddModal, setShowAddModal] = useState(false);
 
   const dummyUsers = [
     { id: 1, name: "Dummy John", email: "john@example.com", role: "User" },
@@ -43,18 +44,34 @@ const UserManagement = () => {
     setFormData({ name: user.name, email: user.email, role: user.role });
   };
 
-  const handleEditSubmit = (e) => {
+  const handleAddSubmit = (e) => {
     e.preventDefault();
-    fetch(`http://localhost:3000/api/users/${editingUser}`, {
-      method: "PUT",
+    fetch(`http://localhost:3000/api/users`, {
+      method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
     })
       .then(() => {
-        setEditingUser(null);
+        setShowAddModal(false);
         fetchUsers();
       })
       .catch((err) => console.error(err));
+  };
+
+  const exportCSV = () => {
+    const csvRows = [
+      ["Name", "Email", "Role"],
+      ...users.map((u) => [u.name, u.email, u.role]),
+    ];
+    const csvContent =
+      "data:text/csv;charset=utf-8," +
+      csvRows.map((row) => row.join(",")).join("\n");
+    const link = document.createElement("a");
+    link.setAttribute("href", encodeURI(csvContent));
+    link.setAttribute("download", "users.csv");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   const [searchTerm, setSearchTerm] = useState("");
@@ -146,6 +163,18 @@ const UserManagement = () => {
       {/* Main Content */}
       <main className="flex-1 p-8">
         <h1 className="text-3xl font-semibold mb-8 text-gray-800">User Management</h1>
+
+        {/* Toolbar */}
+        <div className="flex justify-between items-center mb-6">
+          <div>
+            <p className="text-lg font-semibold text-gray-700">Total Users: {users.length}</p>
+          </div>
+          <div className="flex gap-2">
+            <button onClick={exportCSV} className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">Export CSV</button>
+            <button onClick={() => { setFormData({ name: "", email: "", role: "" }); setShowAddModal(true); }} className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">+ Add User</button>
+          </div>
+        </div>
+
         <div className="overflow-x-auto bg-white rounded-xl shadow border border-gray-200">
         <div className="mb-6 pl-4 pt-4">
           <div className="flex justify-between items-center mb-4">
@@ -254,6 +283,25 @@ const UserManagement = () => {
                 >
                   Save
                 </button>
+              </div>
+            </form>
+          </div>
+        )}
+        {/* Add User Modal */}
+        {showAddModal && (
+          <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50">
+            <form onSubmit={handleAddSubmit} className="bg-white p-6 rounded shadow-lg w-96">
+              <h2 className="text-lg font-bold mb-4">Add New User</h2>
+              <input className="w-full mb-3 p-2 border rounded" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} placeholder="Name" required />
+              <input className="w-full mb-3 p-2 border rounded" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} placeholder="Email" required />
+              <select className="w-full mb-4 p-2 border rounded" value={formData.role} onChange={(e) => setFormData({ ...formData, role: e.target.value })} required>
+                <option value="">Select Role</option>
+                <option value="User">User</option>
+                <option value="Admin">Admin</option>
+              </select>
+              <div className="flex justify-end gap-2">
+                <button type="button" className="px-4 py-2 bg-gray-300 rounded" onClick={() => setShowAddModal(false)}>Cancel</button>
+                <button type="submit" className="px-4 py-2 bg-blue-600 text-white rounded">Add</button>
               </div>
             </form>
           </div>
