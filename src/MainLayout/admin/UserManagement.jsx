@@ -8,8 +8,12 @@ const UserManagement = () => {
   const [showAddModal, setShowAddModal] = useState(false);
 
   const dummyUsers = [
-    { id: 1, name: "Dummy John", email: "john@example.com", role: "User" },
-    { id: 2, name: "Dummy Jane", email: "jane@example.com", role: "Admin" },
+    { id: 1, name: "John", email: "john@example.com", role: "User" },
+    { id: 2, name: "Jane", email: "jane@example.com", role: "Admin" },
+    { id: 3, name: "Budi", email: "budi@example.com", role: "User" },
+    { id: 4, name: "Adel", email: "adel@example.com", role: "User" },
+    { id: 5, name: "Angel", email: "angel@example.com", role: "User" },
+    { id: 6, name: "Mini", email: "mini@example.com", role: "User" }
   ];
 
   const fetchUsers = async () => {
@@ -95,6 +99,20 @@ const UserManagement = () => {
       direction = "desc";
     }
     setSortConfig({ key, direction });
+  };
+
+  const handleEditSubmit = (e) => {
+    e.preventDefault();
+    fetch(`http://localhost:3000/api/users/${editingUser}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    })
+    .then(() => {
+      setEditingUser(null);
+      fetchUsers();
+    })
+    .catch((err) => console.error(err));
   };
 
   return (
@@ -188,58 +206,45 @@ const UserManagement = () => {
             />
           </div>
         </div>
-          <table className="min-w-full text-left">
-          <thead className="bg-blue-100 text-blue-900">
-            <tr>
-              <th className="p-4 border cursor-pointer" onClick={() => handleSort("name")}>
-                Name {sortConfig.key === "name" ? (sortConfig.direction === "asc" ? "▲" : "▼") : ""}
-              </th>
-              <th className="p-4 border cursor-pointer" onClick={() => handleSort("email")}>
-                Email {sortConfig.key === "email" ? (sortConfig.direction === "asc" ? "▲" : "▼") : ""}
-              </th>
-              <th className="p-4 border cursor-pointer" onClick={() => handleSort("role")}>
-                Role {sortConfig.key === "role" ? (sortConfig.direction === "asc" ? "▲" : "▼") : ""}
-              </th>
-              <th className="p-4 border">Actions</th>
-            </tr>
-          </thead>
-            <tbody>
-              {filteredUsers.length > 0 ? (
-                filteredUsers.map((user) => (
-                <tr key={user.id} className="hover:bg-blue-50">
-                  <td className="p-4 border">{user.name}</td>
-                  <td className="p-4 border">{user.email}</td>
-                  <td className="p-4 border">{user.role}</td>
-                  <td className="p-4 border">
-                    <button
-                      className="bg-blue-500 text-white px-3 py-1 rounded mr-2"
-                      onClick={() => handleEditClick(user)}
-                    >
-                      Edit
-                    </button>
-                    <button
-                      className="bg-red-500 text-white px-3 py-1 rounded"
-                      onClick={() => handleDelete(user.id)}
-                    >
-                      Delete
-                    </button>
-                  </td>
-                </tr>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-4">
+            {filteredUsers.length > 0 ? (
+              filteredUsers.map((user) => (
+              <div key={user.id} className="bg-white border rounded-xl p-6 shadow hover:shadow-lg transition-transform hover:scale-105 flex flex-col items-center text-center">
+                <img
+                src="https://via.placeholder.com/100"
+                alt="User avatar"
+                className="w-20 h-20 rounded-full mb-4"
+                />
+                <h3 className="text-xl font-semibold text-gray-800">{user.name}</h3>
+                <p className="text-gray-600">{user.email}</p>
+                <span className="mt-2 inline-block px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-medium">{user.role}</span>
+                <div className="mt-4 flex gap-2">
+                  <button
+                  onClick={() => handleEditClick(user)}
+                  className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600"
+                  >
+                    Edit
+                  </button>
+                  <button
+                  onClick={() => handleDelete(user.id)}
+                  className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
               ))
             ) : (
-              <tr>
-                <td colSpan="4" className="p-4 text-center text-gray-500">
-                  No users found.
-                </td>
-              </tr>
+            <p className="text-gray-500 col-span-full text-center">No users found.</p>
             )}
-            </tbody>
-          </table>
+          </div>
         </div>
 
         {/* Edit Modal */}
         {editingUser !== null && (
-          <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50">
+          <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50"
+          role="dialog"
+          aria-modal="true">
             <form
               onSubmit={handleEditSubmit}
               className="bg-white p-6 rounded shadow-lg w-96"
@@ -289,7 +294,9 @@ const UserManagement = () => {
         )}
         {/* Add User Modal */}
         {showAddModal && (
-          <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50">
+          <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50"
+          role="dialog"
+          aria-modal="true">
             <form onSubmit={handleAddSubmit} className="bg-white p-6 rounded shadow-lg w-96">
               <h2 className="text-lg font-bold mb-4">Add New User</h2>
               <input className="w-full mb-3 p-2 border rounded" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} placeholder="Name" required />
