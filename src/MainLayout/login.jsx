@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "../app.css";
 import LogoIcon from "../assets/logo.svg";
 import Gambar from "../assets/gambar.svg";
@@ -25,31 +25,31 @@ const Login = () => {
       // Simpan token dan role
       localStorage.setItem("token", data.token);
       localStorage.setItem("role", data.role);
-      localStorage.setItem("adminEmail", email); // Store admin email
+      localStorage.setItem("adminEmail", email);
 
       alert("Login berhasil!");
 
       // Arahkan berdasarkan email admin
       if (email === "admin@gmail.com") {
-        navigate("/dashboard-admin"); // atau "/admin/dashboard" jika path-nya begitu
+        navigate("/dashboard-admin");
       } else {
         navigate("/user/dashboard");
       }
     } catch (err) {
       alert(err.message);
-    }
-    
-    if (email === "admin@gmail.com") {
-      alert("Connecting...");
 
-      // Simulate dummy login
-      localStorage.setItem("token", "dummy-token");
-      localStorage.setItem("role", "admin");
-      localStorage.setItem("adminEmail", email);
+      // Simulasi dummy login untuk admin
+      if (email === "admin@gmail.com") {
+        alert("Connecting...");
 
-      navigate("/dashboard-admin");
-    } else {
-      alert("Login failed: " + err.message);
+        localStorage.setItem("token", "dummy-token");
+        localStorage.setItem("role", "admin");
+        localStorage.setItem("adminEmail", email);
+
+        navigate("/dashboard-admin");
+      } else {
+        alert("Login failed: " + err.message);
+      }
     }
   };
 
@@ -84,6 +84,13 @@ const Login = () => {
           </div>
 
           <button type="submit" className="submit-btn">Login</button>
+
+          <p className="signup-text">
+            Belum punya akun?{" "}
+            <Link to="/signup" className="signup-link">
+              Daftar di sini
+            </Link>
+          </p>
         </form>
       </div>
 
