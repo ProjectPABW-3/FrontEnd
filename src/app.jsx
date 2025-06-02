@@ -9,6 +9,13 @@ import DashboardMitra from "./MainLayout/mitra/dashboardMitra";
 import AdminDashboard from "./MainLayout/admin/AdminDashboard";
 import Users from "./MainLayout/admin/UserManagement";
 import ProductManagement from "./MainLayout/admin/ProductManagement";
+import Sidebarprofile from "./components/sidebarprofile/sidebarprofile";
+import Emoney from "./MainLayout/profile/emoney";
+import Account from "./MainLayout/profile/account";
+import Booking from "./MainLayout/profile/booking";
+import Passengers from "./MainLayout/profile/passengers";
+import Logout from "./MainLayout/profile/logout";
+
 
 function App() {
   return (
@@ -24,6 +31,12 @@ function App() {
         <Route path="/dashboard-admin" element={<AdminDashboard />}/>
         <Route path="/UserManagement" element={<Users />} />
         <Route path="/ProductManagement" element={<ProductManagement />} />
+        <Route path="/Sidebarprofile" element={<Sidebarprofile />} />
+        <Route path="/Emoney" element={<Emoney />} />
+        <Route path="/Account" element={<Account />} />
+        <Route path="/Booking" element={<Booking />} />
+        <Route path="/passengers" element={<Passengers />} />
+        <Route path="/Logout" element={<Logout />} />
         {/* tambahkan route lainnya jika perlu */}
       </Routes>
     </Router>
