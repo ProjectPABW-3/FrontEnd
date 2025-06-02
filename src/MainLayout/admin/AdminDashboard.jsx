@@ -66,7 +66,7 @@ const AdminDashboard = () => {
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 p-8">
+      <main className="flex-1 min-h-screen bg-gradient-to-br from-white via-blue-50 to-sky-100 p-8">
         <h1 className="text-3xl font-semibold mb-8 text-gray-800">Welcome, Admin! 👋</h1>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

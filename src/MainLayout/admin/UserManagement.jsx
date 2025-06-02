@@ -179,11 +179,11 @@ const UserManagement = () => {
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 p-8">
+      <main className="flex-1 min-h-screen bg-gradient-to-br from-white via-blue-50 to-sky-100 p-8">
         <h1 className="text-3xl font-semibold mb-8 text-gray-800">User Management</h1>
 
         {/* Toolbar */}
-        <div className="flex justify-between items-center mb-6">
+        <div className="bg-white/90 border border-blue-200 rounded-xl p-4 shadow-sm flex justify-between items-center mb-4">
           <div>
             <p className="text-lg font-semibold text-gray-700">Total Users: {users.length}</p>
           </div>
@@ -193,10 +193,10 @@ const UserManagement = () => {
           </div>
         </div>
 
-        <div className="overflow-x-auto bg-white rounded-xl shadow border border-gray-200">
+        <div className="bg-white/70 backdrop-blur-md border border-blue-100 rounded-2xl shadow-lg p-6 mt-6">
         <div className="mb-6 pl-4 pt-4">
           <div className="flex justify-between items-center mb-4">
-            <h2 className="text-2xl font-semibold text-gray-800">User List</h2>
+            <h2 className="text-xl font-semibold text-blue-900 mb-4">User List</h2>
             <input
             type="text"
             placeholder="Search by name or email..."
@@ -209,25 +209,20 @@ const UserManagement = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-4">
             {filteredUsers.length > 0 ? (
               filteredUsers.map((user) => (
-              <div key={user.id} className="bg-white border rounded-xl p-6 shadow hover:shadow-lg transition-transform hover:scale-105 flex flex-col items-center text-center">
-                <img
-                src="https://via.placeholder.com/100"
-                alt="User avatar"
-                className="w-20 h-20 rounded-full mb-4"
-                />
-                <h3 className="text-xl font-semibold text-gray-800">{user.name}</h3>
-                <p className="text-gray-600">{user.email}</p>
-                <span className="mt-2 inline-block px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-medium">{user.role}</span>
+              <div key={user.id} className="bg-sky-50 border border-blue-100 rounded-xl p-6 shadow hover:shadow-xl hover:bg-sky-100 transition-all">
+                <h3 className="text-xl font-bold text-blue-900">{user.name}</h3>
+                <p className="text-slate-500">{user.email}</p>
+                <span className="mt-2 inline-block px-3 py-1 bg-gradient-to-r from-sky-100 to-blue-100 text-blue-700 rounded-full text-xs font-medium shadow-sm">{user.role}</span>
                 <div className="mt-4 flex gap-2">
                   <button
                   onClick={() => handleEditClick(user)}
-                  className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600"
+                  className="bg-gradient-to-r from-blue-500 to-sky-500 text-white px-4 py-1 rounded-full shadow hover:from-sky-600 hover:to-blue-600"
                   >
                     Edit
                   </button>
                   <button
                   onClick={() => handleDelete(user.id)}
-                  className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
+                  className="bg-gradient-to-r from-red-400 to-red-600 text-white px-4 py-1 rounded-full shadow hover:from-red-500 hover:to-red-700"
                   >
                     Delete
                   </button>
