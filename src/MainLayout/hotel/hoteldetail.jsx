@@ -28,7 +28,6 @@ import {
   FaArrowLeft,
 } from "react-icons/fa";
 import { MdLocationOn } from "react-icons/md";
-import NavbarProfile from "../../../src/components/navbar/NavbarProfile";
 import Footer from "../../../src/components/footer/footer";
 import Logo from "../../assets/logo.svg";
 import MBS3 from "../../assets/hotel/MBS3.jpg";
@@ -36,7 +35,8 @@ import TP3 from "../../assets/hotel/TP3.jpg";
 import SVT1 from "../../assets/hotel/SVT1.jpg";
 import BHL1 from "../../assets/hotel/BHL1.jpg";
 import BAA2 from "../../assets/hotel/BAA2.jpg";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import Swal from "sweetalert2";
 
 const HotelDetailPage = () => {
   const hotel = {
@@ -46,12 +46,31 @@ const HotelDetailPage = () => {
     address: "10 Bayfront Avenue, Marina Bay 018956, Singapore",
   };
 
+  const navigate = useNavigate();
+
   const [activeSection, setActiveSection] = useState("overview");
 
   const scrollToSection = (id) => {
     const section = document.getElementById(id);
     section?.scrollIntoView({ behavior: "smooth" });
     setActiveSection(id);
+  };
+
+  const handlePemesanan = async () => {
+    const confirmed = await Swal.fire({
+      title: "Konfirmasi Pemesanan",
+      text: "Apakah kamu yakin ingin memesan kamar ini?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Ya, Pesan Sekarang!",
+      cancelButtonText: "Batal",
+    });
+
+    if (confirmed.isConfirmed) {
+      navigate("/hotel-booking");
+    }
   };
 
   const buttonClass = (id) =>
@@ -358,20 +377,20 @@ const HotelDetailPage = () => {
 
               {/* Tombol */}
               <div className="flex flex-col gap-4 mt-4 w-fit">
-                <Link
-                  to={"/hotel-payment"}
-                  className="bg-blue-900 hover:cursor-pointer text-white px-6 py-2 rounded-lg font-bold text-[18px] shadow hover:opacity-90"
+                <button
+                  onClick={handlePemesanan}
+                  className="bg-blue-900 text-white px-6 py-2 rounded-lg font-bold text-[18px] shadow hover:opacity-90"
                   style={{ fontFamily: "Poppins" }}
                 >
                   Breakfast Include &nbsp; Rp.8.540.000
-                </Link>
-                <Link
-                  to={"/hotel-payment"}
-                  className="bg-blue-900 hover:cursor-pointer text-white px-6 py-2 rounded-lg font-bold text-[18px] shadow hover:opacity-90"
+                </button>
+                <button
+                  onClick={handlePemesanan}
+                  className="bg-blue-900 text-white px-6 py-2 rounded-lg font-bold text-[18px] shadow hover:opacity-90"
                   style={{ fontFamily: "Poppins" }}
                 >
                   Breakfast No Include &nbsp; Rp.5.540.000
-                </Link>
+                </button>
               </div>
             </div>
           </div>
@@ -512,20 +531,20 @@ const HotelDetailPage = () => {
 
               {/* Tombol */}
               <div className="flex flex-col gap-4 mt-4 w-fit">
-                <Link
-                  to={"/hotel-payment"}
-                  className="bg-blue-900 hover:cursor-pointer text-white px-6 py-2 rounded-lg font-bold text-[18px] shadow hover:opacity-90"
+                <button
+                  onClick={handlePemesanan}
+                  className="bg-blue-900 text-white px-6 py-2 rounded-lg font-bold text-[18px] shadow hover:opacity-90"
                   style={{ fontFamily: "Poppins" }}
                 >
                   Breakfast Include &nbsp; Rp.8.540.000
-                </Link>
-                <Link
-                  to={"/hotel-payment"}
-                  className="bg-blue-900 hover:cursor-pointer text-white px-6 py-2 rounded-lg font-bold text-[18px] shadow hover:opacity-90"
+                </button>
+                <button
+                  onClick={handlePemesanan}
+                  className="bg-blue-900 text-white px-6 py-2 rounded-lg font-bold text-[18px] shadow hover:opacity-90"
                   style={{ fontFamily: "Poppins" }}
                 >
                   Breakfast No Include &nbsp; Rp.5.540.000
-                </Link>
+                </button>
               </div>
             </div>
           </div>
@@ -667,15 +686,13 @@ const HotelDetailPage = () => {
               {/* Tombol */}
               <div className="flex flex-col gap-4 mt-4 w-fit">
                 <Link
-                  to={"/hotel-payment"}
-                  className="bg-blue-900 hover:cursor-pointer text-white px-6 py-2 rounded-lg font-bold text-[18px] shadow hover:opacity-90"
+                  className="bg-blue-900 text-white px-6 py-2 rounded-lg font-bold text-[18px] shadow hover:opacity-90"
                   style={{ fontFamily: "Poppins" }}
                 >
                   Breakfast Include &nbsp; Rp.8.540.000
                 </Link>
                 <Link
-                  to={"/hotel-payment"}
-                  className="bg-blue-900 hover:cursor-pointer text-white px-6 py-2 rounded-lg font-bold text-[18px] shadow hover:opacity-90"
+                  className="bg-blue-900 text-white px-6 py-2 rounded-lg font-bold text-[18px] shadow hover:opacity-90"
                   style={{ fontFamily: "Poppins" }}
                 >
                   Breakfast No Include &nbsp; Rp.5.540.000

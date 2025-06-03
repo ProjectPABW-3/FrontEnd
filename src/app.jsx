@@ -37,7 +37,7 @@ function App() {
         <Route path="/hotel-booking" element={<HotelBooking />} />
         <Route path="/flight-search" element={<FlightSearch />} />
         <Route path="/bookingPesawat" element={<BookingPesawat />} />
-        <Route path="/hotel-payment" element={<HotelPayment />} />
+        <Route path="/hotel-payment/:pemesananId" element={<HotelPayment />} />
         <Route path="/flight-payment" element={<Payment2 />} />
         <Route path="/footer" element={<Footer />} />
         <Route path="/profil/setting" element={<ProfilSetting />} />

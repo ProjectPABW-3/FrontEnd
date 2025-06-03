@@ -54,19 +54,6 @@ const Booking = () => {
             </div>
           </div>
 
-          {/* Purchase List */}
-          <div>
-            <h3 className="text-lg font-bold mb-4">Purchase List</h3>
-            <div className="bg-gray-50 border rounded shadow-sm p-4">
-              <p>
-                View your{" "}
-                <span className="text-blue-500 underline cursor-pointer">
-                  Purchase History
-                </span>
-              </p>
-            </div>
-          </div>
-
           {/* Purchase History Component */}
           <div>
             <h3 className="text-lg font-bold mb-2">Purchase List</h3>
