@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "../app.css";
 import Gambar1 from "../assets/login/Gambar1.jpg";
 import Logo from "../assets/logo.svg";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -24,12 +25,18 @@ const Login = () => {
       if (!res.ok) throw new Error(data.message || "Login failed");
 
       const role = data.user.role;
+      const name = data.user.name;
 
       localStorage.setItem("token", data.token);
+      localStorage.setItem("name", name);
       localStorage.setItem("role", role);
       localStorage.setItem("email", data.user.email);
 
-      alert(`Login berhasil sebagai ${role}!`);
+      Swal.fire({
+        title: "Login Berhasil!",
+        text: "Selamat datang kembali.",
+        icon: "success",
+      });
 
       if (role === "admin") {
         navigate("/dashboard-admin");
@@ -38,24 +45,13 @@ const Login = () => {
       } else {
         alert("Role tidak dikenali!");
       }
-
     } catch (err) {
-      alert("Login gagal: " + err.message);
-
-      // Dummy login untuk pengujian lokal
-      if (email === "admin@gmail.com") {
-        localStorage.setItem("token", "dummy-token");
-        localStorage.setItem("role", "admin");
-        localStorage.setItem("email", email);
-        alert("Login dummy admin berhasil");
-        navigate("/dashboard-admin");
-      } else if (email === "user@gmail.com") {
-        localStorage.setItem("token", "dummy-token");
-        localStorage.setItem("role", "user");
-        localStorage.setItem("email", email);
-        alert("Login dummy user berhasil");
-        navigate("/dashboard-user");
-      }
+      Swal.fire({
+        title: "Login Gagal",
+        text: err.message || "Terjadi kesalahan saat login.",
+        icon: "error",
+        confirmButtonText: "Coba Lagi",
+      });
     }
   };
 
@@ -74,13 +70,23 @@ const Login = () => {
       {/* Kanan: Form Login */}
       <div className="flex flex-1 items-center justify-center bg-white overflow-y-auto">
         <div className="w-full max-w-md px-6 py-4 sm:px-8 sm:py-6 space-y-4">
-          <img src={Logo} alt="SkyBook Logo" className="mx-auto w-40 h-40 mb-2" />
-          <h1 className="text-2xl font-bold text-center text-blue-600">Login</h1>
-          <p className="text-center text-gray-600">Welcome to SkyBook - Let's go in</p>
+          <img
+            src={Logo}
+            alt="SkyBook Logo"
+            className="mx-auto w-40 h-40 mb-2"
+          />
+          <h1 className="text-2xl font-bold text-center text-blue-600">
+            Login
+          </h1>
+          <p className="text-center text-gray-600">
+            Welcome to SkyBook - Let's go in
+          </p>
 
           <form className="space-y-6" onSubmit={handleLogin}>
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">Email</label>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
+                Email
+              </label>
               <input
                 type="email"
                 required
@@ -92,7 +98,9 @@ const Login = () => {
             </div>
 
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">Password</label>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
+                Password
+              </label>
               <input
                 type="password"
                 required
@@ -111,7 +119,9 @@ const Login = () => {
             </button>
 
             <div className="flex flex-col sm:flex-row justify-between sm:items-center text-sm gap-2">
-              <a href="#" className="text-blue-500 hover:underline">Forgot?</a>
+              <a href="#" className="text-blue-500 hover:underline">
+                Forgot?
+              </a>
               <span className="text-gray-700">
                 Don’t have an account?{" "}
                 <button

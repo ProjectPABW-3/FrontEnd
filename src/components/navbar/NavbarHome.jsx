@@ -1,9 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
 import logo from "../../assets/logo.svg";
 
-const NavbarHome = ({ isLoggedIn, userName }) => {
+const NavbarHome = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userName, setUserName] = useState("");
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    const name = localStorage.getItem("name");
+    if (token) {
+      setIsLoggedIn(true);
+      setUserName(name);
+    } else {
+      setIsLoggedIn(false);
+    }
+  }, []);
   return (
     <nav className="absolute w-full bg-white shadow-md px-6 py-4 flex items-center justify-between z-50 rounded-b-3xl">
       <Link to={"/"}>
@@ -41,7 +54,7 @@ const NavbarHome = ({ isLoggedIn, userName }) => {
                 Login
               </button>
             </Link>
-            <Link to="/register">
+            <Link to="/signup">
               <button className="px-4 py-2 text-sm font-semibold bg-blue-500 text-white rounded-full hover:bg-blue-600">
                 Register
               </button>
@@ -49,7 +62,7 @@ const NavbarHome = ({ isLoggedIn, userName }) => {
           </>
         ) : (
           <Link
-            to="/profile"
+            to="/account"
             className="flex items-center space-x-2 hover:text-blue-500"
           >
             <span className="font-medium">{userName}</span>

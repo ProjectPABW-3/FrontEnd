@@ -7,12 +7,12 @@ import bgnavbar from "../../assets/bgnavbar.jpg";
 const NavbarProfile = ({ isLoggedIn, userName }) => {
   return (
     <nav
-      className="w-full shadow-md px-6 py-4 flex items-center justify-between bg-cover bg-center"
+      className="w-full shadow-md px-6 py-4 flex items-center justify-between bg-cover bg-center rounded-b-3xl"
       style={{ backgroundImage: `url(${bgnavbar})` }}
     >
       <Link to={"/"}>
         {" "}
-        <img src={logo} alt="logo" className="h-20" />{" "}
+        <img src={logo} alt="logo" className="h-10" />{" "}
       </Link>
 
       <ul className="flex space-x-6 text-sm font-extrabold text-gray-500">
