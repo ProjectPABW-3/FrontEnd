@@ -17,6 +17,7 @@ const NavbarHome = () => {
       setIsLoggedIn(false);
     }
   }, []);
+
   return (
     <nav className="absolute w-full bg-white shadow-md px-6 py-4 flex items-center justify-between z-50 rounded-b-3xl">
       <Link to={"/"}>

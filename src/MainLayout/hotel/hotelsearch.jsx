@@ -10,6 +10,7 @@ import {
   FaHotel,
   FaMapMarkerAlt,
   FaCalendarAlt,
+  FaArrowLeft,
 } from "react-icons/fa";
 import { IoMdCheckmark } from "react-icons/io";
 import { MdLocationOn } from "react-icons/md";
@@ -18,6 +19,8 @@ import MBS2 from "../../assets/hotel/MBS2.jpg";
 import MBS3 from "../../assets/hotel/MBS3.jpg";
 import MBS4 from "../../assets/hotel/BHL1.jpg";
 import MBS5 from "../../assets/hotel/BHL2.jpg";
+import NavbarProfile from "../../../src/components/navbar/NavbarProfile";
+import Footer from "../../../src/components/footer/footer";
 import { Link } from "react-router";
 
 const HotelCard = ({ name, location, price, imageSrc }) => (
@@ -66,7 +69,7 @@ const HotelCard = ({ name, location, price, imageSrc }) => (
 );
 
 const Filters = () => (
-  <div className="w-1/3 mr-8 -ml-60 bg-white p-4 rounded-lg shadow-md border border-black">
+  <div className="w-1/3 mr-8 -ml-60 bg-white p-4 rounded-lg shadow-md border border-black max-h-[1500px]">
     <h2 className="text-lg font-semibold mb-2">
       Filter terbaru{" "}
       <span className="text-red-500 cursor-pointer text-sm ml-2">
@@ -192,7 +195,11 @@ const Filters = () => (
 
 const HotelSearchPage = () => {
   return (
-    <div className="bg-[#F8F8F8] min-h-screen py-10 px-6 flex flex-col items-center">
+    <div className="bg-[#F8F8F8] min-h-screen pt-10 px-6 flex flex-col items-center">
+      {/* Icon Tombol Back */}
+      <Link to={"/"} className="self-start text-gray-600 hover:text-blue-600">
+        <FaArrowLeft className="text-xl" />
+      </Link>
       <div className="flex bg-white rounded-t-xl overflow-hidden shadow ml-[-756px]">
         <button className="flex items-center gap-2 px-8 py-4 text-gray-500 hover:bg-blue-100 font-semibold">
           <FaPlane style={{ color: "#60B5EE" }} /> Flights
@@ -280,6 +287,19 @@ const HotelSearchPage = () => {
           />
         </div>
       </div>
+
+      <div className="mt-10 mb-4">
+        <Link to="/homepage">
+          <button className="flex items-center gap-2 bg-[#023E8A] text-white px-6 py-2 rounded-lg hover:bg-[#0077B6] transition font-bold">
+            <FaArrowLeft />
+            Kembali ke Home
+          </button>
+        </Link>
+      </div>
+
+      <footer className=" w-full text-black py-10 ">
+        <Footer />
+      </footer>
     </div>
   );
 };

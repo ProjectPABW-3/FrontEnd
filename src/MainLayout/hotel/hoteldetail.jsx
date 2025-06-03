@@ -25,9 +25,18 @@ import {
   FaUserTie,
   FaUserNurse,
   FaUserGraduate,
+  FaArrowLeft,
 } from "react-icons/fa";
 import { MdLocationOn } from "react-icons/md";
-import { useNavigate } from "react-router";
+import NavbarProfile from "../../../src/components/navbar/NavbarProfile";
+import Footer from "../../../src/components/footer/footer";
+import Logo from "../../assets/logo.svg";
+import MBS3 from "../../assets/hotel/MBS3.jpg";
+import TP3 from "../../assets/hotel/TP3.jpg";
+import SVT1 from "../../assets/hotel/SVT1.jpg";
+import BHL1 from "../../assets/hotel/BHL1.jpg";
+import BAA2 from "../../assets/hotel/BAA2.jpg";
+import { Link } from "react-router";
 
 const HotelDetailPage = () => {
   const hotel = {
@@ -39,16 +48,10 @@ const HotelDetailPage = () => {
 
   const [activeSection, setActiveSection] = useState("overview");
 
-  const navigate = useNavigate();
-
   const scrollToSection = (id) => {
     const section = document.getElementById(id);
     section?.scrollIntoView({ behavior: "smooth" });
     setActiveSection(id);
-  };
-
-  const handlePayment = () => {
-    navigate("/hotel-booking");
   };
 
   const buttonClass = (id) =>
@@ -59,9 +62,14 @@ const HotelDetailPage = () => {
     }`;
 
   return (
-    <div className="bg-[#F8F8F8] px-6 min-h-screen flex flex-col items-center">
+    <div className="bg-[#F8F8F8] min-h-screen pt-10 px-6 flex flex-col items-center">
+      {/* Icon Tombol Back */}
+      <Link to={-1} className="self-start text-gray-600 hover:text-blue-600">
+        <FaArrowLeft className="text-xl" />
+      </Link>
+
       {/* TAB PILIHAN */}
-      <div className="flex bg-white rounded-t-xl overflow-hidden shadow ml-[-756px] mt-10 z-10 relative">
+      <div className="flex bg-white rounded-t-xl overflow-hidden shadow ml-[-756px]">
         <button className="flex items-center gap-2 px-8 py-4 text-gray-500 hover:bg-blue-100 font-semibold">
           <FaPlane style={{ color: "#60B5EE" }} /> Flights
         </button>
@@ -148,8 +156,22 @@ const HotelDetailPage = () => {
         </div>
 
         <div className="flex flex-row items-start gap-8 mb-12 mt-30">
-          <div className="w-[240px] h-[350px] bg-gray-300 rounded-none"></div>
-          <div className="w-[240px] h-[300px] bg-gray-300 rounded-none mt-6"></div>
+          <div className="w-[240px] h-[350px] bg-gray-300 rounded-none overflow-hidden">
+            <img
+              src={BHL1}
+              alt="Gambar 1"
+              className="w-full h-full object-cover"
+            />
+          </div>
+
+          <div className="w-[240px] h-[300px] bg-gray-300 rounded-none mt-6 overflow-hidden">
+            <img
+              src={BAA2}
+              alt="Gambar 2"
+              className="w-full h-full object-cover"
+            />
+          </div>
+
           <div className="flex-1">
             <p className="text-gray-400 text-sm">Welcome To</p>
             <h1 className="text-3xl font-bold mb-4">{hotel.name}</h1>
@@ -184,14 +206,17 @@ const HotelDetailPage = () => {
 
         <div
           id="kamar"
-          className="w-full bg-[#00B6DE] flex items-center justify-center gap-4 rounded-xl py-2 px-2 mb-6 mt-60"
+          className="w-full bg-[#00B6DE] flex items-center justify-center gap-4 rounded-xl py-2 px-2 mb-6 mt-30 relative overflow-visible"
         >
           {/* Logo Sky Book */}
-          <img
-            src="/images/skybook-logo.png"
-            alt="Sky Book Logo"
-            className="w-[50px] h-auto"
-          />
+          <div className="relative w-[60px] h-[50px]">
+            <img
+              src={Logo}
+              alt="Sky Book Logo"
+              className="absolute scale-[2.5] -top-4 -left-4"
+            />
+          </div>
+
           <p className="text-white text-[18px] font-bold font-[Poppins] text-center">
             Choose Sky Book’s top-rated partners for a smoother, more satisfying
             stay experience!
@@ -218,7 +243,7 @@ const HotelDetailPage = () => {
             <div className="flex flex-col md:flex-row gap-6">
               {/* Gambar */}
               <img
-                src="/images/prestige-room.jpg"
+                src={MBS3}
                 alt="Prestige Room"
                 className="w-[411px] h-[411px] rounded-md object-cover mx-auto"
               />
@@ -311,7 +336,7 @@ const HotelDetailPage = () => {
             </div>
 
             {/* Harga dan Tombol */}
-            <div className="mt-6">
+            <div className="-mt-15">
               <p
                 className="text-[18px] font-bold"
                 style={{ fontFamily: "Poppins" }}
@@ -333,19 +358,20 @@ const HotelDetailPage = () => {
 
               {/* Tombol */}
               <div className="flex flex-col gap-4 mt-4 w-fit">
-                <button
-                  onClick={handlePayment}
-                  className="bg-blue-900 text-white px-6 py-2 rounded-lg font-bold text-[18px] shadow hover:opacity-90"
+                <Link
+                  to={"/hotel-payment"}
+                  className="bg-blue-900 hover:cursor-pointer text-white px-6 py-2 rounded-lg font-bold text-[18px] shadow hover:opacity-90"
                   style={{ fontFamily: "Poppins" }}
                 >
                   Breakfast Include &nbsp; Rp.8.540.000
-                </button>
-                <button
-                  className="bg-blue-900 text-white px-6 py-2 rounded-lg font-bold text-[18px] shadow hover:opacity-90"
+                </Link>
+                <Link
+                  to={"/hotel-payment"}
+                  className="bg-blue-900 hover:cursor-pointer text-white px-6 py-2 rounded-lg font-bold text-[18px] shadow hover:opacity-90"
                   style={{ fontFamily: "Poppins" }}
                 >
                   Breakfast No Include &nbsp; Rp.5.540.000
-                </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -371,7 +397,7 @@ const HotelDetailPage = () => {
             <div className="flex flex-col md:flex-row gap-6">
               {/* Gambar */}
               <img
-                src="/images/prestige-room.jpg"
+                src={TP3}
                 alt="Prestige Room"
                 className="w-[411px] h-[411px] rounded-md object-cover mx-auto"
               />
@@ -464,7 +490,7 @@ const HotelDetailPage = () => {
             </div>
 
             {/* Harga dan Tombol */}
-            <div className="mt-6">
+            <div className="-mt-15">
               <p
                 className="text-[18px] font-bold"
                 style={{ fontFamily: "Poppins" }}
@@ -486,18 +512,20 @@ const HotelDetailPage = () => {
 
               {/* Tombol */}
               <div className="flex flex-col gap-4 mt-4 w-fit">
-                <button
-                  className="bg-blue-900 text-white px-6 py-2 rounded-lg font-bold text-[18px] shadow hover:opacity-90"
+                <Link
+                  to={"/hotel-payment"}
+                  className="bg-blue-900 hover:cursor-pointer text-white px-6 py-2 rounded-lg font-bold text-[18px] shadow hover:opacity-90"
                   style={{ fontFamily: "Poppins" }}
                 >
                   Breakfast Include &nbsp; Rp.8.540.000
-                </button>
-                <button
-                  className="bg-blue-900 text-white px-6 py-2 rounded-lg font-bold text-[18px] shadow hover:opacity-90"
+                </Link>
+                <Link
+                  to={"/hotel-payment"}
+                  className="bg-blue-900 hover:cursor-pointer text-white px-6 py-2 rounded-lg font-bold text-[18px] shadow hover:opacity-90"
                   style={{ fontFamily: "Poppins" }}
                 >
                   Breakfast No Include &nbsp; Rp.5.540.000
-                </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -523,7 +551,7 @@ const HotelDetailPage = () => {
             <div className="flex flex-col md:flex-row gap-6">
               {/* Gambar */}
               <img
-                src="/images/prestige-room.jpg"
+                src={SVT1}
                 alt="Prestige Room"
                 className="w-[411px] h-[411px] rounded-md object-cover mx-auto"
               />
@@ -616,7 +644,7 @@ const HotelDetailPage = () => {
             </div>
 
             {/* Harga dan Tombol */}
-            <div className="mt-6">
+            <div className="-mt-15">
               <p
                 className="text-[18px] font-bold"
                 style={{ fontFamily: "Poppins" }}
@@ -638,18 +666,20 @@ const HotelDetailPage = () => {
 
               {/* Tombol */}
               <div className="flex flex-col gap-4 mt-4 w-fit">
-                <button
-                  className="bg-blue-900 text-white px-6 py-2 rounded-lg font-bold text-[18px] shadow hover:opacity-90"
+                <Link
+                  to={"/hotel-payment"}
+                  className="bg-blue-900 hover:cursor-pointer text-white px-6 py-2 rounded-lg font-bold text-[18px] shadow hover:opacity-90"
                   style={{ fontFamily: "Poppins" }}
                 >
                   Breakfast Include &nbsp; Rp.8.540.000
-                </button>
-                <button
-                  className="bg-blue-900 text-white px-6 py-2 rounded-lg font-bold text-[18px] shadow hover:opacity-90"
+                </Link>
+                <Link
+                  to={"/hotel-payment"}
+                  className="bg-blue-900 hover:cursor-pointer text-white px-6 py-2 rounded-lg font-bold text-[18px] shadow hover:opacity-90"
                   style={{ fontFamily: "Poppins" }}
                 >
                   Breakfast No Include &nbsp; Rp.5.540.000
-                </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -657,14 +687,17 @@ const HotelDetailPage = () => {
 
         <div
           id="fasilitas"
-          className="w-full bg-[#00B6DE] flex items-center justify-center gap-4 rounded-xl py-2 px-2 mb-6 mt-60"
+          className="w-full bg-[#00B6DE] flex items-center justify-center gap-4 rounded-xl py-2 px-2 mb-6 mt-30 relative overflow-visible"
         >
           {/* Logo Sky Book */}
-          <img
-            src="/images/skybook-logo.png"
-            alt="Sky Book Logo"
-            className="w-[50px] h-auto"
-          />
+          <div className="relative w-[60px] h-[50px]">
+            <img
+              src={Logo}
+              alt="Sky Book Logo"
+              className="absolute scale-[2.5] -top-4 -left-4"
+            />
+          </div>
+
           <p className="text-white text-[18px] font-bold font-[Poppins] text-center">
             All facilities in Marina By Sand Singapura
           </p>
@@ -911,14 +944,17 @@ const HotelDetailPage = () => {
 
         <div
           id="review"
-          className="w-full bg-[#00B6DE] flex items-center justify-center gap-4 rounded-xl py-2 px-2 mb-6 mt-28"
+          className="w-full bg-[#00B6DE] flex items-center justify-center gap-4 rounded-xl py-2 px-2 mb-6 mt-20 relative overflow-visible"
         >
           {/* Logo Sky Book */}
-          <img
-            src="/images/skybook-logo.png"
-            alt="Sky Book Logo"
-            className="w-[50px] h-auto"
-          />
+          <div className="relative w-[60px] h-[50px]">
+            <img
+              src={Logo}
+              alt="Sky Book Logo"
+              className="absolute scale-[2.5] -top-4 -left-4"
+            />
+          </div>
+
           <p className="text-white text-[18px] font-bold font-[Poppins] text-center">
             Review Marina By Sand
           </p>
@@ -1055,6 +1091,19 @@ const HotelDetailPage = () => {
           </div>
         </div>
       </div>
+
+      <div className="mt-10 mb-4">
+        <Link to="/homepage">
+          <button className="flex items-center gap-2 bg-[#023E8A] text-white px-6 py-2 rounded-lg hover:bg-[#0077B6] transition font-bold">
+            <FaArrowLeft />
+            Kembali ke Home
+          </button>
+        </Link>
+      </div>
+
+      <footer className=" w-full text-black py-10 ">
+        <Footer />
+      </footer>
     </div>
   );
 };

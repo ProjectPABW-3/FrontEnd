@@ -2,8 +2,22 @@ import { FaUserCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import bgnavbar from "../../assets/bgnavbar.jpg";
 import logo from "../../assets/logo.svg";
+import { useEffect, useState } from "react";
 
-const NavbarProfile = ({ isLoggedIn, userName }) => {
+const NavbarProfile = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userName, setUserName] = useState("");
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    const name = localStorage.getItem("name");
+    if (token) {
+      setIsLoggedIn(true);
+      setUserName(name);
+    } else {
+      setIsLoggedIn(false);
+    }
+  }, []);
   return (
     <nav
       className="w-full shadow-md px-6 py-4 flex items-center justify-between bg-cover bg-center rounded-b-3xl"
