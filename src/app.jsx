@@ -16,6 +16,7 @@ import Booking from "./MainLayout/profile/booking";
 import Passengers from "./MainLayout/profile/passengers";
 import Logout from "./MainLayout/profile/logout";
 import Homepage from "./MainLayout/homepage";
+import Aboutus from "./MainLayout/aboutus";
 
 
 function App() {
@@ -38,7 +39,8 @@ function App() {
         <Route path="/Booking" element={<Booking />} />
         <Route path="/passengers" element={<Passengers />} />
         <Route path="/Logout" element={<Logout />} />
-        <Route path="/homepage" element={<Homepage/>} />
+        <Route path="/homepage" element={<Homepage />} />
+        <Route path="/aboutus" element={<Aboutus />} />
         {/* tambahkan route lainnya jika perlu */}
       </Routes>
     </Router>
