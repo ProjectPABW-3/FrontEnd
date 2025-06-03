@@ -7,7 +7,7 @@
   
   .login-form-container {
     width: 90%;
-    height: 100vh; /* Tambahkan ini untuk full screen height */
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -25,7 +25,7 @@
   .signup-link {
     color: #007bff;
     font-weight: 200;
-    font-size: 0.1rem; /* Pastikan ukurannya konsisten */
+    font-size: 0.1rem;
     text-decoration: none;
   }
   
@@ -127,4 +127,3 @@
     background-position: center;
     background-repeat: no-repeat;
   }
-  

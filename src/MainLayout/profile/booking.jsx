@@ -1,8 +1,7 @@
-import React from 'react';
-import Sidebarprofile from '../../components/sidebarprofile/sidebarprofile';
-import Navbarprofile from '../../components/navbar/navbarprofile';
-import Footer from '../../components/footer/footer';
 import { FaClipboardList } from 'react-icons/fa';
+import Footer from '../../components/footer/footer';
+import Navbarprofile from '../../components/navbar/navbarprofile';
+import Sidebarprofile from '../../components/sidebarprofile/sidebarprofile';
 
 const Booking = () => {
   return (
@@ -32,7 +31,7 @@ const Booking = () => {
 
         {/* Active Tickets */}
         <div>
-          <h3 className="text-lg font-bold mb-2">Active E-tickets & Vouchers</h3>
+          <h3 className="text-lg font-bold mb-4 mt-4">Active E-tickets & Vouchers</h3>
           <div className="bg-gray-50 border rounded shadow-sm p-4 flex items-start space-x-4">
             <div className="bg-blue-100 text-[#60b5ee] p-3 rounded-full">
               <FaClipboardList size={20} />
@@ -49,7 +48,7 @@ const Booking = () => {
 
         {/* Purchase List */}
         <div>
-          <h3 className="text-lg font-bold mb-2">Purchase List</h3>
+          <h3 className="text-lg font-bold mb-4 mt-4">Purchase List</h3>
           <div className="bg-gray-50 border rounded shadow-sm p-4">
             <p>
               View your <span className="text-blue-500 underline cursor-pointer">Purchase History</span>
