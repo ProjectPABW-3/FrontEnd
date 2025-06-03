@@ -5,6 +5,7 @@ import { MdFlightTakeoff, MdHotel } from "react-icons/md";
 import Gambar1 from "../assets/Homepage/Gambar1.jpg";
 import WhyChooseUs from "../assets/Homepage/WhyChooseUs.jpg";
 import NavbarHome from "../components/navbar/NavbarHome";
+import { Link } from "react-router";
 
 const Homepage = () => {
   return (
@@ -21,12 +22,12 @@ const Homepage = () => {
               Plan Your Dream Trip - Fast and Easy!
             </h1>
 
-            <div className="flex justify-start w-full">
-              <div className="bg-white rounded-t-xl shadow-md w-fit px-4 py-2 ml-[5.1%] mt-10">
+            <div className="flex flex-col w-fit container mx-auto">
+              <div className="bg-white rounded-t-xl shadow-md w-fit px-4 py-2 mt-10">
                 <div className="flex items-center gap-4">
                   {/* Button Flights (aktif) */}
-                  <button className="flex items-center gap-2 text-blue-800 font-semibold border-b-2 border-blue-800 pb-1">
-                    <MdFlightTakeoff className="text-blue-800 text-xl" />
+                  <button className="flex items-center gap-2 text-gray-500 hover:text-blue-600 font-semibold pb-1">
+                    <MdFlightTakeoff className="text-gray-500 text-xl group-hover:text-blue-600" />
                     Flights
                   </button>
 
@@ -34,87 +35,94 @@ const Homepage = () => {
                   <div className="h-6 w-px bg-gray-300"></div>
 
                   {/* Button Hotels */}
-                  <button className="flex items-center gap-2 text-gray-500 hover:text-blue-600 font-semibold">
-                    <MdHotel className="text-gray-500 text-xl group-hover:text-blue-600" />
+                  <button className="flex items-center gap-2 text-blue-800 font-semibold border-b-2 border-blue-800">
+                    <MdHotel className="text-blue-800 text-xl" />
                     Hotels
                   </button>
                 </div>
               </div>
-            </div>
 
-            {/* Card */}
-            <div className="bg-white rounded-xl p-4 mt-2 shadow-md w-[90%] max-w-6xl min-h-[120px]">
-              <div className="flex flex-wrap gap-4 justify-between items-end">
-                <div className="flex items-center gap-2  border-gray-300 rounded-lg p-2 shadow-lg w-[160px] h-[48px]">
-                  <FiMapPin className="text-blue-600 text-xl flex-shrink-0" />
-                  <div className="flex flex-col">
-                    <label className="block text-gray-500 text-sm ">From</label>
-                    <input
-                      type="text"
-                      className="font-semibold focus:outline-none bg-transparent text-black text-sm"
-                      value="Balikpapan (BPN)"
-                      readOnly
-                    />
+              {/* Card */}
+              <div className="bg-white rounded-xl p-4 mt-2 shadow-md w-fit">
+                <div className="flex flex-wrap gap-4 justify-between items-end">
+                  <div className="flex items-center gap-2  border-gray-300 rounded-lg p-2 shadow-lg w-[160px] h-[48px]">
+                    <FiMapPin className="text-blue-600 text-xl flex-shrink-0" />
+                    <div className="flex flex-col">
+                      <label className="block text-gray-500 text-sm ">
+                        From
+                      </label>
+                      <input
+                        type="text"
+                        className="font-semibold focus:outline-none bg-transparent text-black text-sm"
+                        value="Balikpapan (BPN)"
+                        readOnly
+                      />
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-2  border-gray-300 rounded-lg p-2 shadow-lg w-[200px] h-[48px]">
+                    <FiMapPin className="text-blue-500 text-xl flex-shrink-0" />
+                    <div className="flex flex-col">
+                      <label className="block text-gray-500 text-sm">To</label>
+                      <input
+                        type="text"
+                        className="font-semibold focus:outline-none bg-transparent text-black text-sm"
+                        value="Kuala Lumpur (KXLA)"
+                        readOnly
+                      />
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-2  border-gray-300 rounded-lg p-2 shadow-lg w-[160px] h-[48px]">
+                    <FaPlane className="text-blue-500 text-xl flex-shrink-0" />
+                    <div className="flex flex-col">
+                      <label className="block text-gray-500 text-sm">
+                        Class
+                      </label>
+                      <select className="font-semibold focus:outline-none bg-transparent text-black text-sm">
+                        <option>Economy</option>
+                        <option>Business</option>
+                        <option>First Class</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-2  border-gray-300 rounded-lg p-2 shadow-lg w-[160px] h-[48px]">
+                    <AiOutlineCalendar className="text-blue-500 text-xl" />
+                    <div>
+                      <label className="block text-gray-500 text-sm">
+                        Departure
+                      </label>
+                      <input
+                        type="date"
+                        className="font-semibold focus:outline-none bg transparant text-black text-sm"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-2  border-gray-300 rounded-lg p-2 shadow-lg w-[160px] h-[48px]">
+                    <AiOutlineCalendar className="text-blue-500 text-xl" />
+                    <div>
+                      <label className="block text-gray-500 text-sm">
+                        Return
+                      </label>
+                      <input
+                        type="date"
+                        className="font-semibold focus:outline-none bg-transparant text-black text-sm"
+                      />
+                    </div>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-2  border-gray-300 rounded-lg p-2 shadow-lg w-[200px] h-[48px]">
-                  <FiMapPin className="text-blue-500 text-xl flex-shrink-0" />
-                  <div className="flex flex-col">
-                    <label className="block text-gray-500 text-sm">To</label>
-                    <input
-                      type="text"
-                      className="font-semibold focus:outline-none bg-transparent text-black text-sm"
-                      value="Kuala Lumpur (KXLA)"
-                      readOnly
-                    />
-                  </div>
+                <div className="mt-6 flex justify-center">
+                  <Link
+                    to={"/hotel-search"}
+                    className="flex items-center gap-2 bg-blue-900 text-white px-8 py-1 rounded-xl shadow hover:bg-blue-800 hover:cursor-pointer transition"
+                  >
+                    Search Flight
+                    <FaSearch className="h-3 mt-[2px]" />
+                  </Link>
                 </div>
-
-                <div className="flex items-center gap-2  border-gray-300 rounded-lg p-2 shadow-lg w-[160px] h-[48px]">
-                  <FaPlane className="text-blue-500 text-xl flex-shrink-0" />
-                  <div className="flex flex-col">
-                    <label className="block text-gray-500 text-sm">Class</label>
-                    <select className="font-semibold focus:outline-none bg-transparent text-black text-sm">
-                      <option>Economy</option>
-                      <option>Business</option>
-                      <option>First Class</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-2  border-gray-300 rounded-lg p-2 shadow-lg w-[160px] h-[48px]">
-                  <AiOutlineCalendar className="text-blue-500 text-xl" />
-                  <div>
-                    <label className="block text-gray-500 text-sm">
-                      Departure
-                    </label>
-                    <input
-                      type="date"
-                      className="font-semibold focus:outline-none bg transparant text-black text-sm"
-                    />
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-2  border-gray-300 rounded-lg p-2 shadow-lg w-[160px] h-[48px]">
-                  <AiOutlineCalendar className="text-blue-500 text-xl" />
-                  <div>
-                    <label className="block text-gray-500 text-sm">
-                      Return
-                    </label>
-                    <input
-                      type="date"
-                      className="font-semibold focus:outline-none bg-transparant text-black text-sm"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-6 flex justify-center">
-                <button className="flex items-center gap-2 bg-blue-900 text-white px-8 py-1 rounded shadow hover:bg-blue-800 transition">
-                  Search Flight
-                  <FaSearch />
-                </button>
               </div>
             </div>
           </div>
