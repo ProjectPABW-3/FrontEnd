@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../app.css";
-import Gambar1 from '../assets/login/Gambar1.jpg';
-import Logo from '../assets/logo.svg';
+import Gambar1 from "../assets/login/Gambar1.jpg";
+import Logo from "../assets/logo.svg";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -20,48 +20,61 @@ const Login = () => {
       });
 
       const data = await res.json();
+
       if (!res.ok) throw new Error(data.message || "Login failed");
 
+      const role = data.user.role;
+
       localStorage.setItem("token", data.token);
-      localStorage.setItem("role", data.role);
-      localStorage.setItem("adminEmail", email);
+      localStorage.setItem("role", role);
+      localStorage.setItem("email", data.user.email);
 
-      alert("Login berhasil!");
+      alert(`Login berhasil sebagai ${role}!`);
 
-      if (email === "admin@gmail.com") {
+      if (role === "admin") {
         navigate("/dashboard-admin");
+      } else if (role === "user") {
+        navigate("/homepage");
       } else {
-        navigate("/user/dashboard");
+        alert("Role tidak dikenali!");
       }
 
     } catch (err) {
       alert("Login gagal: " + err.message);
 
-      // Dummy login fallback
+      // Dummy login untuk pengujian lokal
       if (email === "admin@gmail.com") {
-        alert("Connecting (dummy)...");
         localStorage.setItem("token", "dummy-token");
         localStorage.setItem("role", "admin");
-        localStorage.setItem("adminEmail", email);
+        localStorage.setItem("email", email);
+        alert("Login dummy admin berhasil");
         navigate("/dashboard-admin");
+      } else if (email === "user@gmail.com") {
+        localStorage.setItem("token", "dummy-token");
+        localStorage.setItem("role", "user");
+        localStorage.setItem("email", email);
+        alert("Login dummy user berhasil");
+        navigate("/dashboard-user");
       }
     }
   };
 
+  const handleGoToSignUp = () => {
+    navigate("/signup");
+  };
+
   return (
     <div className="flex flex-col md:flex-row h-screen overflow-hidden">
-      {/* Bagian Kiri (Background) */}
+      {/* Kiri: Gambar */}
       <div
         className="hidden md:flex md:flex-1 bg-cover bg-center"
         style={{ backgroundImage: `url(${Gambar1})` }}
       />
 
-      {/* Bagian Kanan (Form Login) */}
+      {/* Kanan: Form Login */}
       <div className="flex flex-1 items-center justify-center bg-white overflow-y-auto">
         <div className="w-full max-w-md px-6 py-4 sm:px-8 sm:py-6 space-y-4">
-          {/* Logo */}
           <img src={Logo} alt="SkyBook Logo" className="mx-auto w-40 h-40 mb-2" />
-
           <h1 className="text-2xl font-bold text-center text-blue-600">Login</h1>
           <p className="text-center text-gray-600">Welcome to SkyBook - Let's go in</p>
 
@@ -100,7 +113,14 @@ const Login = () => {
             <div className="flex flex-col sm:flex-row justify-between sm:items-center text-sm gap-2">
               <a href="#" className="text-blue-500 hover:underline">Forgot?</a>
               <span className="text-gray-700">
-                Don’t have an account? <a href="#" className="text-blue-500 hover:underline">Sign Up</a>
+                Don’t have an account?{" "}
+                <button
+                  type="button"
+                  onClick={handleGoToSignUp}
+                  className="text-blue-500 hover:underline"
+                >
+                  Sign Up
+                </button>
               </span>
             </div>
           </form>
