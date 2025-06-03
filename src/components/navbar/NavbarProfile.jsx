@@ -25,7 +25,7 @@ const NavbarProfile = () => {
     >
       <Link to={"/"}>
         {" "}
-        <img src={logo} alt="logo" className="h-10" />{" "}
+        <img src={logo} alt="logo" className="h-30" />{" "}
       </Link>
 
       <ul className="flex space-x-6 text-base font-medium ml-80">
