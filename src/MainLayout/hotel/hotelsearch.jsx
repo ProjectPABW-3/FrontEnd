@@ -19,6 +19,7 @@ import MBS3 from "../../assets/hotel/MBS3.jpg";
 import MBS4 from "../../assets/hotel/BHL1.jpg";
 import MBS5 from "../../assets/hotel/BHL2.jpg";
 import { Link } from "react-router";
+import { FaArrowLeft } from "react-icons/fa";
 
 const HotelCard = ({ name, location, price, imageSrc }) => (
   <div className="flex bg-white shadow-lg rounded-xl p-6 mb-8 hover:shadow-2xl hover:scale-105 transition-all duration-500">
@@ -193,6 +194,13 @@ const Filters = () => (
 const HotelSearchPage = () => {
   return (
     <div className="bg-[#F8F8F8] min-h-screen py-10 px-6 flex flex-col items-center">
+      {/* Icon Tombol Back */}
+      <Link
+        to={"/"}
+        className="self-start mb-4 text-gray-600 hover:text-blue-600"
+      >
+        <FaArrowLeft className="text-xl" />
+      </Link>
       <div className="flex bg-white rounded-t-xl overflow-hidden shadow ml-[-756px]">
         <button className="flex items-center gap-2 px-8 py-4 text-gray-500 hover:bg-blue-100 font-semibold">
           <FaPlane style={{ color: "#60B5EE" }} /> Flights
@@ -237,13 +245,6 @@ const HotelSearchPage = () => {
           </div>
         </div>
       </div>
-
-      <button
-        className="mt-[-20px] py-3 px-8 rounded-full flex items-center gap-2 shadow-xl hover:bg-blue-900 transition"
-        style={{ backgroundColor: "#023E8A", color: "white" }}
-      >
-        Search Hotels <FaSearch style={{ color: "white" }} />
-      </button>
 
       <div className="flex w-full max-w-5xl mt-20 ml-60">
         <Filters />

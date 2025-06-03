@@ -25,9 +25,10 @@ import {
   FaUserTie,
   FaUserNurse,
   FaUserGraduate,
+  FaArrowLeft,
 } from "react-icons/fa";
 import { MdLocationOn } from "react-icons/md";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 const HotelDetailPage = () => {
   const hotel = {
@@ -59,7 +60,13 @@ const HotelDetailPage = () => {
     }`;
 
   return (
-    <div className="bg-[#F8F8F8] px-6 min-h-screen flex flex-col items-center">
+    <div className="bg-[#F8F8F8] px-6 py-10 min-h-screen flex flex-col items-center">
+      <Link
+        to={-1}
+        className="self-start mb-4 text-gray-600 hover:text-blue-600"
+      >
+        <FaArrowLeft className="text-xl" />
+      </Link>
       {/* TAB PILIHAN */}
       <div className="flex bg-white rounded-t-xl overflow-hidden shadow ml-[-756px] mt-10 z-10 relative">
         <button className="flex items-center gap-2 px-8 py-4 text-gray-500 hover:bg-blue-100 font-semibold">
