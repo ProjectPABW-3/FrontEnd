@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { FaUserCircle } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import logo from "../../assets/logo.svg";
 
 const NavbarHome = () => {
@@ -23,7 +23,7 @@ const NavbarHome = () => {
         <img src={logo} alt="logo" className="h-10" />
       </Link>
 
-      <ul className="flex space-x-6 text-sm font-medium">
+      <ul className="flex space-x-6 text-base font-medium ml-80">
         <li>
           <Link to="/" className="hover:text-blue-500">
             Home
@@ -41,7 +41,7 @@ const NavbarHome = () => {
         </li>
         <li>
           <Link to="/promo" className="hover:text-blue-500">
-            Promo
+            About Us
           </Link>
         </li>
       </ul>
