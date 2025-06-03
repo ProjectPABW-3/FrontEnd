@@ -2,7 +2,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./MainLayout/login";
 import Signup from "./MainLayout/signup";
 import Home from "./MainLayout/homepage";
-import Navbarhome from "./components/navbar/navbarhome";
 import Footer from "./components/footer/footer";
 import ProfilSetting from "./MainLayout/profilSetting";
 import DashboardMitra from "./MainLayout/mitra/dashboardMitra";
@@ -29,7 +28,6 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/navbarhome" element={<Navbarhome />} />
         <Route path="/bookingPesawat" element={<BookingPesawat />} />
         <Route path="/payment1" element={<Payment1 />} />
         <Route path="/payment2" element={<Payment2 />} />
