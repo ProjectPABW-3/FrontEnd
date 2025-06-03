@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
+import { useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 
 export default function HotelPayment() {
   const [countdown, setCountdown] = useState("");
+  const { pemesananId } = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -39,26 +41,46 @@ export default function HotelPayment() {
     return () => clearInterval(timer);
   }, []);
 
-  const handlePayment = async () => {
+  const handlePayment = async (pemesananId) => {
     try {
-      // Simulasi logika pembayaran, misalnya API call
-      // const response = await axios.post('/api/payment', { ... });
+      const res = await fetch(
+        `http://localhost:3000/api/pemesanan/${pemesananId}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            status_pemesanan: "Success",
+          }),
+        }
+      );
 
-      // Jika berhasil
-      Swal.fire({
-        icon: "success",
-        title: "Pembayaran Berhasil",
-        text: "Terima kasih! Pembayaran Anda telah diproses.",
-        confirmButtonColor: "#60B5EE",
-      });
+      const data = await res.json();
 
-      navigate("/");
+      if (res.ok) {
+        await Swal.fire({
+          icon: "success",
+          title: "Pembayaran Berhasil",
+          text: "Terima kasih! Pembayaran Anda telah diproses.",
+          confirmButtonColor: "#60B5EE",
+        });
+        navigate("/");
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Pembayaran Gagal",
+          text:
+            data.message || "Silakan coba lagi atau hubungi layanan pelanggan.",
+          confirmButtonColor: "#d33",
+        });
+      }
     } catch (error) {
-      // Jika gagal
+      console.error(error);
       Swal.fire({
         icon: "error",
-        title: "Pembayaran Gagal",
-        text: "Silakan coba lagi atau hubungi layanan pelanggan.",
+        title: "Terjadi Kesalahan",
+        text: "Gagal memproses pembayaran.",
         confirmButtonColor: "#d33",
       });
     }
@@ -116,8 +138,8 @@ export default function HotelPayment() {
 
         {/* Button Bayar */}
         <button
-          onClick={handlePayment}
-          className="mt-4 w-full bg-green-500 text-white py-2 rounded hover:bg-green-600 transition"
+          onClick={() => handlePayment(pemesananId)}
+          className="mt-4 w-full bg-green-500 text-white py-2 rounded hover:bg-green-600 transition hover:cursor-pointer"
         >
           Bayar Sekarang
         </button>

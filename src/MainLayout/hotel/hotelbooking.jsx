@@ -1,12 +1,76 @@
-import React from "react";
 import { FaUserFriends, FaBed, FaTimesCircle } from "react-icons/fa";
 import pesawat from "../../assets/umum/pesawat.jpg";
 import BAA1 from "../../assets/hotel/BAA1.jpg";
 import Logo from "../../assets/logo.svg";
 import { useNavigate } from "react-router";
+import Swal from "sweetalert2";
+import { useEffect } from "react";
 
 export default function HotelBooking() {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const handlePemesanan = async () => {
+    const confirmed = await Swal.fire({
+      title: "Konfirmasi Pemesanan",
+      text: "Apakah kamu yakin ingin memesan kamar ini?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Ya, Pesan Sekarang!",
+      cancelButtonText: "Batal",
+    });
+
+    if (confirmed.isConfirmed) {
+      try {
+        // Tampilkan loading
+        Swal.fire({
+          title: "Memproses...",
+          text: "Sedang mengirim pemesanan Anda...",
+          allowOutsideClick: false,
+          didOpen: () => {
+            Swal.showLoading();
+          },
+        });
+
+        const res = await fetch("http://localhost:3000/api/pemesanan", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            userId: localStorage.getItem("userId"),
+            pemesanan_kamarHotel: "Prestige",
+            tanggal_pemesanan: Date.now(),
+            status_pemesanan: "Pending",
+            harga: 5540000,
+          }),
+        });
+
+        const data = await res.json();
+        console.log(data);
+
+        // Tutup loading
+        Swal.close();
+
+        if (res.ok) {
+          Swal.fire("Berhasil!", "Pemesanan berhasil dibuat.", "success");
+          navigate(`/hotel-payment/${data.pemesanan_id}`);
+        } else {
+          Swal.fire("Gagal!", data.message || "Terjadi kesalahan.", "error");
+        }
+      } catch (error) {
+        console.error(error);
+        Swal.close();
+        Swal.fire("Gagal!", "Terjadi kesalahan saat mengirim data.", "error");
+      }
+    }
+  };
+
   return (
     <div className="min-h-screen bg-[#F8F8F8] flex flex-col items-center -py-2 px-4 overflow-hidden">
       <div className="relative w-screen h-40">
@@ -409,7 +473,7 @@ export default function HotelBooking() {
         </div>
 
         <button
-          onClick={() => navigate("/hotel-payment")}
+          onClick={handlePemesanan}
           className="w-full bg-orange-400 hover:bg-orange-500 text-white font-semibold py-3 rounded-lg shadow-md transition hover:cursor-pointer"
         >
           Continue To Payment

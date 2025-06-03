@@ -26,10 +26,12 @@ const Login = () => {
 
       const role = data.user.role;
       const name = data.user.name;
+      const userId = data.user.id;
 
       localStorage.setItem("token", data.token);
       localStorage.setItem("name", name);
       localStorage.setItem("role", role);
+      localStorage.setItem("userId", userId);
       localStorage.setItem("email", data.user.email);
 
       Swal.fire({
