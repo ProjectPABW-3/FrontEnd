@@ -1,12 +1,12 @@
+import { useState } from "react";
 import { AiOutlineCalendar } from "react-icons/ai";
 import { FaPlane, FaSearch } from "react-icons/fa";
 import { MdFlightTakeoff, MdHotel } from "react-icons/md";
+import { Link } from "react-router";
 import Gambar1 from "../assets/Homepage/Gambar1.jpg";
 import WhyChooseUs from "../assets/Homepage/WhyChooseUs.jpg";
 import NavbarHome from "../components/navbar/NavbarHome";
-import { Link } from "react-router";
 import FlightCardSearch from "./FlightCardSearch";
-import { useState } from "react";
 import HotelCardSearch from "./HotelCardSearch";
 
 const Homepage = () => {
@@ -17,7 +17,7 @@ const Homepage = () => {
       <div className="bg-white">
         <div
           className="relative bg-cover bg-center h-110"
-          style={{ backgroundImage: url(${Gambar1}) }}
+          style={{ backgroundImage: `url(${Gambar1})` }}
         >
           <div className="absolute inset-0 bg-black opacity-50"> </div>
           <div className="relative text-white flex flex-col items-center justify-start h-full pt-24">
@@ -270,7 +270,7 @@ const Homepage = () => {
         {/* Why Choose Us Section */}
         <div
           className="relative bg-cover bg-center h-[440px] "
-          style={{ backgroundImage: url(${WhyChooseUs}) }}
+          style={{ backgroundImage: `url(${WhyChooseUs})` }}
         >
           <div className="absolute inset-0 flex flex-col  items-center justify-center text-center text-white">
             <div className="w-full px-4 sm:px-6 lg:px-8 mx-auto">
@@ -353,9 +353,11 @@ const Homepage = () => {
                 Home to the majestic Kölner Dom, a lively carnival festival, and
                 the signature Kölsch beer.
               </p>
+              <Link to="/Artikel" className="hover:text-blue-500">
               <button className="mt-3 bg-blue-900 text-white px-4 py-1 rounded">
                 READ MORE
               </button>
+              </Link>
             </div>
           </div>
 
@@ -371,9 +373,11 @@ const Homepage = () => {
                 A futuristic city in the UAE known for skyscrapers, luxury, and
                 innovation.
               </p>
+              <Link to="/Artikel1" className="hover:text-blue-500">
               <button className="mt-3 bg-blue-900 text-white px-4 py-1 rounded">
                 READ MORE
               </button>
+              </Link>
             </div>
           </div>
 
@@ -389,9 +393,11 @@ const Homepage = () => {
                 A modern city that combines technology, culture, and natural
                 beauty in one destination.
               </p>
+              <Link to="/Artikel2" className="hover:text-blue-500">
               <button className="mt-3 bg-blue-900 text-white px-4 py-1 rounded">
                 READ MORE
               </button>
+              </Link>
             </div>
           </div>
 
@@ -407,9 +413,11 @@ const Homepage = () => {
                 A spectacular natural destination with high cliffs and boundless
                 desert views.
               </p>
+              <Link to="/Artikel3" className="hover:text-blue-500">
               <button className="mt-3 bg-blue-900 text-white px-4 py-1 rounded">
                 READ MORE
               </button>
+               </Link>
             </div>
           </div>
         </section>

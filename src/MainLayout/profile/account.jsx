@@ -1,7 +1,6 @@
-import { useState } from 'react';
-import Footer from '../../components/footer/footer';
-import Navbarprofile from '../../components/navbar/navbarprofile';
-import Sidebarprofile from '../../components/sidebarprofile/sidebarprofile';
+import Footer from "../../components/footer/footer";
+import Sidebarprofile from "../../components/sidebarprofile/sidebarprofile";
+
 
 const Account = () => {
   const [fullName, setFullName] = useState("Ni Wayan Rini Kurniati");
@@ -16,7 +15,6 @@ const Account = () => {
   const [newPhoneNumber, setNewPhoneNumber] = useState("");
 
   const handleSavePhoneNumber = () => {
-    // Simpan nomor baru di sini (bisa pakai API atau setState tambahan)
     console.log("Phone number saved:", newPhoneNumber);
     setIsModalOpen(false);
     setNewPhoneNumber("");
