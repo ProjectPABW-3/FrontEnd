@@ -30,7 +30,7 @@ const Account = () => {
     <div className="flex flex-col min-h-screen bg-white">
       <Navbarprofile />
 
-      <div className="flex flex-1 px-8 py-10 gap-8"> 
+      <div className="flex flex-1 px-8 py-10 gap-8">
         <div className="w-64">
           <Sidebarprofile />
         </div>

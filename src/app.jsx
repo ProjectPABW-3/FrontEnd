@@ -2,11 +2,13 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./MainLayout/login";
 import Signup from "./MainLayout/signup";
 import Home from "./MainLayout/homepage";
-import Navbarhome from "./components/navbar/navbarhome";
 import Footer from "./components/footer/footer";
 import ProfilSetting from "./MainLayout/profilSetting";
 import DashboardMitra from "./MainLayout/mitra/dashboardMitra";
 import AdminDashboard from "./MainLayout/admin/AdminDashboard";
+import BookingPesawat from "./MainLayout/booking/bookingPesawat";
+import Payment1 from "./MainLayout/payment/payment1";
+import Payment2 from "./MainLayout/payment/payment2";
 import Users from "./MainLayout/admin/UserManagement";
 import ProductManagement from "./MainLayout/admin/ProductManagement";
 import Sidebarprofile from "./components/sidebarprofile/sidebarprofile";
@@ -26,7 +28,9 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/navbarhome" element={<Navbarhome />} />
+        <Route path="/bookingPesawat" element={<BookingPesawat />} />
+        <Route path="/payment1" element={<Payment1 />} />
+        <Route path="/payment2" element={<Payment2 />} />
         <Route path="/footer" element={<Footer />} />
         <Route path="/profil/setting" element={<ProfilSetting />} />
         <Route path="/dashboard-mitra" element={<DashboardMitra />} />
