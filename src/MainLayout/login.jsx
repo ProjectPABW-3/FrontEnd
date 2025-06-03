@@ -56,7 +56,7 @@ const Login = () => {
       } else if (role === "user") {
         navigate("/homepage");
       } else {
-        alert("Role tidak dikenali!");
+        navigate("/dashboard-mitra");
       }
     } catch (err) {
       Swal.close();
