@@ -19,6 +19,7 @@ import Passengers from "./MainLayout/profile/passengers";
 import Logout from "./MainLayout/profile/logout";
 import Homepage from "./MainLayout/homepage";
 import Aboutus from "./MainLayout/aboutus";
+import HistoriPembelian from "./components/history/HistoriPembelian";
 
 
 function App() {
@@ -45,7 +46,8 @@ function App() {
         <Route path="/Logout" element={<Logout />} />
         <Route path="/homepage" element={<Homepage />} />
         <Route path="/aboutus" element={<Aboutus />} />
-        {/* tambahkan route lainnya jika perlu */}
+        <Route path="/histori" element={<HistoriPembelian/>}/>
+         {/* tambahkan route lainnya jika perlu */}
       </Routes>
     </Router>
   );
