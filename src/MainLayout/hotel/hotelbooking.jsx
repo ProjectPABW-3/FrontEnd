@@ -7,7 +7,6 @@ import Logo from "../../assets/logo.svg";
 export default function HotelBooking() {
   return (
     <div className="min-h-screen bg-[#F8F8F8] flex flex-col items-center -py-2 px-4 overflow-hidden">
-      {/* Top decoration frame for airplane graphics */}
       <div className="relative w-screen h-40">
         <img
           src={pesawat}
@@ -15,7 +14,6 @@ export default function HotelBooking() {
           className="absolute top-0 left-0 w-full h-40 object-cover object-top z-0"
         />
        </div>
-        {/* Main content container */}
         <div
           className="relative z-10 bg-white pt-20 pb-4 px-6 -mt-15 w-full max-w-5xl"
           style={{
@@ -25,9 +23,7 @@ export default function HotelBooking() {
             borderBottomRightRadius: 0,
           }}
         >
-          {/* Progress indicator */}
           <div className="flex items-center justify-between absolute -top-5 left-40 right-50">
-            {/* Step 1 - Booking */}
             <div className="flex items-center gap-2 relative" style={{ left: "10px" }}>
               <div className="absolute -left-40 top-5 transform -translate-y-1/2 w-45 h-1 bg-[#00B4D8]" />
               <div className="flex flex-col items-center">
@@ -38,10 +34,7 @@ export default function HotelBooking() {
               </div>
             </div>
 
-            {/* Arrow */}
             <div className="text-gray-400 text-6xl relative" style={{ top: "-17px" , left: "-25px" }}>→</div>
-
-            {/* Step 2 - Payment */}
             <div className="flex flex-col items-center relative" style={{ right: "80px" }}>
               <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center text-white font-bold text-sm">
                 2
@@ -50,22 +43,17 @@ export default function HotelBooking() {
             </div>
           </div>
 
-          {/* Logo outside top left corner */}
           <img
             src={Logo}
             alt="SkyBook Logo"
             className="absolute -top-23 -left-15 w-40"
           />
 
-          {/* Member Welcome Message + Divider */}
           <div className="mt-1 w-[900px] border-t-2 border-gray-300 pt-4 mx-auto">
             
           </div>
         </div>
       
-      
-
-      {/* Content */}
       <div className="w-full max-w-5xl grid md:grid-cols-2 gap-6 bg-white p-6 shadow-md">
         <h2 className="text-lg font-medium -mt-6">
            Hi, <strong>Azzatul Nabila</strong>! Enjoy these perks as a<br />
@@ -74,7 +62,6 @@ export default function HotelBooking() {
           <p className="text-sm text-blue-500 mt-1">
            Login as Azzatul Nabila (Google)
          </p>
-       {/* Left Perks */}
         <div className="flex flex-col gap-6">
           <div
             className="rounded-t-[30px] rounded-b-[30px] pt-6 pb-1 px-1 mb-4"
@@ -105,16 +92,12 @@ export default function HotelBooking() {
           </div>
         </div>
 
-
-        {/* Right Booking Summary */}
         <div
           className="relative rounded-t-[30px] rounded-b-[30px] pt-40 pb-6 px-4 -mt-20"
           style={{ backgroundColor: "#e0f2fe" }}
         >
-          {/* Putih sebagai background saja */}
         <div className="absolute top-49 left-2 right-2 bg-white rounded-b-[30px] shadow-md h-[345px] z-0"></div>
 
-          {/* Konten di atasnya */}
           <div className="relative z-10 -mt-40">
             <div className="flex justify-between items-center mb-2">
               <h3 className="font-bold text-xl">Marina By Sand</h3>
@@ -169,8 +152,6 @@ export default function HotelBooking() {
         </div>
       </div>
 
-
-      {/* Contact Details Section */}
       <div className="w-full max-w-5xl bg-white p-6 mt-6 rounded-xl shadow-md border border-gray-400">
         <h2 className="text-lg font-semibold mb-2">Contact Details (for E-voucher)</h2>
         <p className="text-sm text-gray-600 mb-4">
@@ -225,8 +206,6 @@ export default function HotelBooking() {
         </div>
       </div>
 
-
-      {/* Special Request Section */}
       <div className="w-full max-w-5xl bg-white p-6 mt-6 rounded-xl shadow-md border border-gray-400">
         <h2 className="text-lg font-semibold mb-2">Let us know if you have any request</h2>
         <p className="text-sm text-gray-600 mb-4">
@@ -255,12 +234,9 @@ export default function HotelBooking() {
         </div>
       </div>
 
-
-      {/* Add-ons for Your Stay */}
       <div className="w-full max-w-5xl bg-white p-6 mt-6 rounded-xl shadow-md border border-gray-200">
         <h2 className="text-lg font-semibold mb-4">Add-ons for Your Stay</h2>
 
-        {/* Box 1 */}
         <div className="border border-gray-300 rounded-lg p-4 mb-4 space-y-3">
           <div className="flex items-start gap-3">
             <input
@@ -294,7 +270,6 @@ export default function HotelBooking() {
           </div>
         </div>
 
-        {/* Box 2 */}
         <div className="border border-gray-300 rounded-lg p-4 mb-4 space-y-3">
           <div className="flex items-start gap-3">
             <input
@@ -328,7 +303,6 @@ export default function HotelBooking() {
           </div>
         </div>
 
-        {/* Box 3 */}
         <div className="border border-gray-300 rounded-lg p-4 mb-4 space-y-3">
           <div className="flex items-start gap-3">
             <input
@@ -359,9 +333,6 @@ export default function HotelBooking() {
         </div>
       </div>
 
-
-
-      {/* Price Details Section */}
       <div className="w-full max-w-5xl bg-white p-6 mt-4 rounded-xl shadow-md border border-gray-200">
         <h2 className="text-lg font-semibold mb-4">Price details</h2>
 
@@ -390,7 +361,6 @@ export default function HotelBooking() {
         </button>
        </div>
       <div className="h-30"></div>
-
     </div>
   );
 }

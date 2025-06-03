@@ -1,13 +1,11 @@
 import React from 'react';
 import { useState } from "react";
 import { FaPlane, FaHotel,  FaConciergeBell,  FaUtensils, FaBath, FaShuttleVan, FaBookOpen, FaMapMarkerAlt,
-          FaSpa, FaDumbbell, FaTree, FaWifi, FaChild, FaWheelchair, FaBusinessTime, FaSwimmer, FaPlaneDeparture, FaHorse, 
-          FaShoppingBag, FaStore, FaGift, FaUsers, FaWifi as FaWifiAlt, FaBaby, FaCalendarAlt, FaUser, FaSearch, 
-          FaStar, FaUserTie, FaUserNurse, FaUserGraduate } from "react-icons/fa";
+          FaChild, FaWheelchair, FaBusinessTime, FaPlaneDeparture, FaHorse, FaShoppingBag, FaUsers, FaWifi as FaWifiAlt, 
+          FaBaby, FaCalendarAlt, FaUser, FaSearch, FaStar, FaUserTie, FaUserNurse, FaUserGraduate } from "react-icons/fa";
 import { MdLocationOn } from 'react-icons/md';
 
 const HotelDetailPage = () => {
-  // Dummy data statis
   const hotel = {
     name: "Marina By Sand",
     description:
@@ -30,8 +28,6 @@ const HotelDetailPage = () => {
         : "bg-transparent text-gray-500"
     }`;
 
-  
-
   return (
     <div className="bg-[#F8F8F8] px-6 min-h-screen flex flex-col items-center">
 
@@ -45,11 +41,9 @@ const HotelDetailPage = () => {
         </button>
       </div>
 
-      {/* FORM SEARCH */}
       <div className="bg-white rounded-tr-xl rounded-b-xl shadow-lg px-8 py-9 w-full max-w-5xl flex flex-col items-center">
         <div className="flex w-full justify-between items-center overflow-hidden">
           
-          {/* Kolom 1: Lokasi */}
           <div className="flex items-center gap-3 flex-1 px-6 py-4">
             <FaMapMarkerAlt style={{ color: '#60B5EE' }} className="text-xl" />
             <div>
@@ -58,10 +52,8 @@ const HotelDetailPage = () => {
             </div>
           </div>
 
-          {/* Garis pemisah */}
           <div className="h-12 w-px bg-gray-400"></div>
 
-          {/* Kolom 2: Tanggal */}
           <div className="flex items-center gap-3 flex-1 px-6 py-4">
             <FaCalendarAlt style={{ color: '#60B5EE' }} className="text-xl" />
             <div>
@@ -70,10 +62,8 @@ const HotelDetailPage = () => {
             </div>
           </div>
 
-          {/* Garis pemisah */}
           <div className="h-12 w-px bg-gray-400"></div>
 
-          {/* Kolom 3: Guests */}
           <div className="flex items-center gap-3 flex-1 px-6 py-4">
             <FaUser style={{ color: '#60B5EE' }} className="text-xl" />
             <div>
@@ -85,12 +75,10 @@ const HotelDetailPage = () => {
         </div>
       </div>
 
-      {/* TOMBOL SEARCH */}
       <button className="mt-[-20px] py-3 px-8 rounded-full flex items-center gap-2 shadow-xl hover:bg-blue-900 transition" style={{ backgroundColor: '#023E8A', color: 'white' }}>
         Search Hotels <FaSearch style={{ color: 'white' }} />
       </button>
 
-      {/* Kontainer biru */}
       <div className="w-full max-w-[1150px] bg-[#F7FDFF] rounded-2xl p-12 mt-20">
         <div className="flex justify-center -mt-[70px] z-10 relative">
           <div className="flex bg-gray-200 rounded-full overflow-hidden">
@@ -124,16 +112,9 @@ const HotelDetailPage = () => {
           </div>
         </div>
     
-
-        {/* Gambar + Deskripsi Horizontal */}
         <div className="flex flex-row items-start gap-8 mb-12 mt-30">
-        {/* Gambar pertama */}
         <div className="w-[240px] h-[350px] bg-gray-300 rounded-none"></div>
-
-        {/* Gambar kedua */}
         <div className="w-[240px] h-[300px] bg-gray-300 rounded-none mt-6"></div>
-
-        {/* Deskripsi */}
         <div className="flex-1">
             <p className="text-gray-400 text-sm">Welcome To</p>
             <h1 className="text-3xl font-bold mb-4">{hotel.name}</h1>
@@ -141,10 +122,7 @@ const HotelDetailPage = () => {
         </div>
         </div>
 
-
-        {/* Maps dan Lokasi */}
         <div className="flex flex-col lg:flex-row justify-center gap-6">
-          {/* Location & Maps */}
           <div className="bg-white shadow-lg rounded-xl p-6 flex items-start gap-4 w-full max-w-sm">
             <div className="w-24 h-24 bg-gray-200 rounded"></div>
             <div>
@@ -156,7 +134,6 @@ const HotelDetailPage = () => {
             </div>
           </div>
 
-          {/* In The Area */}
           <div className="bg-white shadow-lg rounded-xl p-6 w-full max-w-sm">
             <h2 className="font-semibold text-lg mb-4 text-center">In The Area</h2>
             <ul className="text-sm text-gray-600 space-y-2">
@@ -998,13 +975,6 @@ const HotelDetailPage = () => {
                         </div>
                       </div>
                     </div>
-                  
-
-
-
-
-
-
 
       </div>
     </div>

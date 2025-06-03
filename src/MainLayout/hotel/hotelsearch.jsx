@@ -5,8 +5,8 @@ import { MdLocationOn } from 'react-icons/md';
 import MBS1 from '../../assets/hotel/MBS1.jpg';
 import MBS2 from '../../assets/hotel/MBS2.jpg';
 import MBS3 from '../../assets/hotel/MBS3.jpg';
-
-
+import MBS4 from '../../assets/hotel/BHL1.jpg';
+import MBS5 from '../../assets/hotel/BHL2.jpg';
 
 const HotelCard = ({ name, location, price, imageSrc }) => (
     <div className="flex bg-white shadow-lg rounded-xl p-6 mb-8 hover:shadow-2xl hover:scale-105 transition-all duration-500">
@@ -41,13 +41,10 @@ const HotelCard = ({ name, location, price, imageSrc }) => (
   );
   
   
-  
-
 const Filters = () => (
     <div className="w-1/3 mr-8 -ml-60 bg-white p-4 rounded-lg shadow-md border border-black">
       <h2 className="text-lg font-semibold mb-2">Filter terbaru <span className="text-red-500 cursor-pointer text-sm ml-2">Hapus Semua</span></h2>
-      
-      {/* Filter - Promo, Homestay, Breakfast available */}
+  
       <div className="mb-6">
         <div className="flex flex-wrap gap-2">
           <button className="bg-blue-100 text-blue-700 rounded px-3 py-1">Promo</button>
@@ -56,7 +53,6 @@ const Filters = () => (
         </div>
       </div>
   
-      {/* Price Range Filter */}
       <div className="mb-6 border-t border-black pt-4">
         <h3 className="font-semibold mb-2">Price Range</h3>
         <input type="range" min="0" max="15000000000" className="w-full" />
@@ -66,7 +62,6 @@ const Filters = () => (
         </div>
       </div>
   
-      {/* Promo & Diskon */}
       <div className="mb-4 border-t border-black pt-4">
         <h3 className="font-semibold mb-2">Promo & Diskon</h3>
         <div className="flex flex-col gap-1 text-sm">
@@ -76,7 +71,6 @@ const Filters = () => (
         </div>
       </div>
   
-      {/* Hotel Bintang Filter */}
       <div className="mb-4 border-t border-black pt-4">
         <h3 className="font-semibold mb-2">Hotel Bintang</h3>
         <div className="flex flex-col gap-1 text-sm">
@@ -86,7 +80,6 @@ const Filters = () => (
         </div>
       </div>
   
-      {/* Accommodation Type */}
       <div className="mt-6 border-t border-black pt-4">
         <h3 className="font-semibold mb-2">Accommodation Type</h3>
         <div className="flex flex-col gap-1 text-sm">
@@ -96,7 +89,6 @@ const Filters = () => (
         </div>
       </div>
   
-      {/* Popular Facilities */}
       <div className="mt-6 border-t border-black pt-4">
         <h3 className="font-semibold mb-2">Popular Facilities</h3>
         <div className="flex flex-col gap-1 text-sm">
@@ -107,7 +99,6 @@ const Filters = () => (
         <div className="text-blue-500 text-sm mt-1 cursor-pointer">See All</div>
       </div>
   
-      {/* More Flexibility */}
       <div className="mt-6 border-t border-black pt-4">
         <h3 className="font-semibold mb-2">More Flexibility</h3>
         <div className="flex flex-col gap-1 text-sm">
@@ -115,7 +106,6 @@ const Filters = () => (
         </div>
       </div>
   
-      {/* Unique Facilities */}
       <div className="mt-6 border-t border-black pt-4">
         <h3 className="font-semibold mb-2">Unique Facilities</h3>
         <div className="flex flex-col gap-1 text-sm">
@@ -126,7 +116,6 @@ const Filters = () => (
         <div className="text-blue-500 text-sm mt-1 cursor-pointer">See All</div>
       </div>
   
-      {/* Room Facilities */}
       <div className="mt-6 border-t border-black pt-4">
         <h3 className="font-semibold mb-2">Room Facilities</h3>
         <div className="flex flex-col gap-1 text-sm">
@@ -143,9 +132,6 @@ const Filters = () => (
 const HotelSearchPage = () => {
     return (
         <div className="bg-[#F8F8F8] min-h-screen py-10 px-6 flex flex-col items-center">
-
-        
-        {/* TAB PILIHAN */}
         <div className="flex bg-white rounded-t-xl overflow-hidden shadow ml-[-756px]">
           <button className="flex items-center gap-2 px-8 py-4 text-gray-500 hover:bg-blue-100 font-semibold">
             <FaPlane style={{ color: '#60B5EE' }} /> Flights
@@ -155,11 +141,9 @@ const HotelSearchPage = () => {
           </button>
         </div>
   
-        {/* FORM SEARCH */}
         <div className="bg-white rounded-tr-xl rounded-b-xl shadow-lg px-8 py-9 w-full max-w-5xl flex flex-col items-center">
           <div className="flex w-full justify-between items-center overflow-hidden">
             
-            {/* Kolom 1: Lokasi */}
             <div className="flex items-center gap-3 flex-1 px-6 py-4">
               <FaMapMarkerAlt style={{ color: '#60B5EE' }} className="text-xl" />
               <div>
@@ -168,10 +152,8 @@ const HotelSearchPage = () => {
               </div>
             </div>
   
-            {/* Garis pemisah */}
             <div className="h-12 w-px bg-gray-400"></div>
   
-            {/* Kolom 2: Tanggal */}
             <div className="flex items-center gap-3 flex-1 px-6 py-4">
               <FaCalendarAlt style={{ color: '#60B5EE' }} className="text-xl" />
               <div>
@@ -180,10 +162,7 @@ const HotelSearchPage = () => {
               </div>
             </div>
   
-            {/* Garis pemisah */}
             <div className="h-12 w-px bg-gray-400"></div>
-  
-            {/* Kolom 3: Guests */}
             <div className="flex items-center gap-3 flex-1 px-6 py-4">
               <FaUser style={{ color: '#60B5EE' }} className="text-xl" />
               <div>
@@ -195,33 +174,26 @@ const HotelSearchPage = () => {
           </div>
         </div>
   
-        {/* TOMBOL SEARCH */}
         <button className="mt-[-20px] py-3 px-8 rounded-full flex items-center gap-2 shadow-xl hover:bg-blue-900 transition" style={{ backgroundColor: '#023E8A', color: 'white' }}>
           Search Hotels <FaSearch style={{ color: 'white' }} /> 
         </button>
   
-
-
-
-      {/* Filter and Hotel Cards */}
-      <div className="flex w-full max-w-5xl mt-20 ml-60">
-        <Filters />
-        <div className="w-4/4 pl-4">
-          {/* Render several HotelCards */}
-          <HotelCard 
-            name="Marina By Sand" 
-            location="Singapura" 
-            price="1.500.000" 
-            imageSrc={[MBS1, MBS2, MBS3]} />
-
-          <HotelCard name="Bulgari Hotel London" location="London, Inggris" price="1.550.000" imageSrc="https://via.placeholder.com/150" />
-          <HotelCard name="The Peninsula" location="Bali, Indonesia" price="2.000.000" imageSrc="https://via.placeholder.com/150" />
-          <HotelCard name="Burj Al Arab" location="New York, USA" price="3.000.000" imageSrc="https://via.placeholder.com/150" />
-          <HotelCard name="The Ritz Paris" location="Tokyo, Japan" price="2.500.000" imageSrc="https://via.placeholder.com/150" />
+        <div className="flex w-full max-w-5xl mt-20 ml-60">
+          <Filters />
+          <div className="w-4/4 pl-4">
+            <HotelCard 
+              name="Marina By Sand" 
+              location="Singapura" 
+              price="1.500.000" 
+              imageSrc={MBS1} />
+              <HotelCard name="Bulgari Hotel London" location="London, Inggris" price="1.550.000" imageSrc={MBS2} />
+              <HotelCard name="The Peninsula" location="Bali, Indonesia" price="2.000.000" imageSrc={MBS3} />
+              <HotelCard name="Burj Al Arab" location="New York, USA" price="3.000.000" imageSrc={MBS4} />
+              <HotelCard name="The Ritz Paris" location="Tokyo, Japan" price="2.500.000" imageSrc={MBS5} />
+          </div>
         </div>
-      </div>
-    </div>
-  );
+     </div>
+   );
 };
 
 export default HotelSearchPage;

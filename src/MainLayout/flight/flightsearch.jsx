@@ -5,8 +5,7 @@ import langit from "../../assets/umum/langit.jpg";
 
 const FlightSearchPage = () => {
   return (
-    <div className="bg-[#F8F8F8] min-h-screen py-10 px-6 flex flex-col items-center">
-
+    <div className="bg-[#F8F8F8] min-h-screen py-10 flex flex-col justify-between items-center">
       {/* TAB PILIHAN */}
       <div className="flex bg-white rounded-t-xl overflow-hidden shadow ml-[-756px]">
         <button className="flex items-center gap-2 px-8 py-4 font-semibold" style={{ backgroundColor: '#00B4D8', color: '#3F5F75' }}>
@@ -92,20 +91,20 @@ const FlightSearchPage = () => {
       {/* SCROLL TANGGAL DAN HARGA */}
       <div className="-mt-26 w-full max-w-5xl overflow-x-auto relative z-20 ml-70">
 
- {/* Panah kiri */}
-  <button className="absolute -left-4 top-1/2 transform -translate-y-1/2 z-30 bg-white shadow p-2 rounded-full">
-    <FaChevronLeft />
-  </button>
+        {/* Panah kiri */}
+        <button className="absolute -left-4 top-1/2 transform -translate-y-1/2 z-30 bg-white shadow p-2 rounded-full">
+            <FaChevronLeft />
+        </button>
 
-  {/* Panah kanan */}
-  <button className="absolute right-2 top-1/2 transform -translate-y-1/2 z-30 bg-white shadow p-2 rounded-full">
-    <FaChevronRight />
-  </button>
+        {/* Panah kanan */}
+        <button className="absolute right-2 top-1/2 transform -translate-y-1/2 z-30 bg-white shadow p-2 rounded-full">
+            <FaChevronRight />
+        </button>
 
-  {/* Ikon kalender */}
-  <div className="absolute right-0 top-1/2 transform -translate-y-1/2 z-30 bg-white shadow p-2 rounded-full">
-    <FaRegCalendarAlt />
-  </div>
+        {/* Ikon kalender */}
+        <div className="absolute right-0 top-1/2 transform -translate-y-1/2 z-30 bg-white shadow p-2 rounded-full">
+            <FaRegCalendarAlt />
+        </div>
 
         <div className="flex gap-3">
           {['Fri, 6 Juni', 'Sat, 7 Juni', 'Fri, 6 Juni', 'Fri, 6 Juni', 'Fri, 6 Juni', 'Fri, 6 Juni'].map((date, index) => (
@@ -117,29 +116,21 @@ const FlightSearchPage = () => {
         </div>
       </div>
 
+      {/* WRAPPER BIRU */}
+      <div className="bg-blue-100 rounded-[30px] py-10 px-6 mt-36 ml-160">
 
+        {/* KONTEN UTAMA */}
+        <div className="max-w-[1300px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-6">
 
+        {/* SIDEBAR FILTER */}
+        <div className="md:col-span-1">
+        </div>
 
+        {/* KONTEN PENERBANGAN */}
+        <div className="md:col-span-3 space-y-6">
 
-
-
-
-{/* WRAPPER BIRU */}
-<div className="bg-blue-100 rounded-[30px] py-10 px-6 mt-36 ml-160">
-
-  {/* KONTEN UTAMA */}
-  <div className="max-w-[1300px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-6">
-
-    {/* SIDEBAR FILTER */}
-    <div className="md:col-span-1">
-      {/* Filter akan dimasukkan di sini */}
-    </div>
-
-    {/* KONTEN PENERBANGAN */}
-    <div className="md:col-span-3 space-y-6">
-
-      {/* KARTU PENERBANGAN */}
-      <div className="bg-white rounded-b-[30px] shadow p-6 flex flex-col gap-4">
+        {/* KARTU PENERBANGAN */}
+        <div className="bg-white rounded-b-[30px] shadow p-6 flex flex-col gap-4">
 
         {/* HEADER KARTU */}
         <div className="flex justify-between items-start">
@@ -215,6 +206,496 @@ const FlightSearchPage = () => {
     </div>
   </div>
 </div>
+      
+      <div className='max-w-full flex flex-row justify-between mt-20'>
+        {/* Left Bar */}
+        <div className="w-[30%] bg-blue-50 p-6 rounded-xl text-sm font-sans">
+          {/* Header filter */}
+          <div className="flex justify-between items-center mb-4">
+            <h2 className="text-lg font-medium text-black">Filter dengan</h2>
+            <button className="text-red-500 text-sm font-medium">Hapus Semua</button>
+          </div>
+
+          {/* Checkbox - AirAsia */}
+          <div className="flex items-center mb-4">
+            <input type="checkbox" className="w-4 h-4 border border-gray-400 mr-2" />
+            <label className="text-black">Penerbangan AirAsia Saja</label>
+          </div>
+
+          <hr className="border-blue-200 my-4" />
+
+          {/* Jumlah Transit */}
+          <h3 className="text-lg font-medium text-black mb-2">Jumlah transit</h3>
+          <div className="space-y-3 mb-4">
+            <div className="flex items-center">
+              <input type="checkbox" className="w-4 h-4 border border-gray-400 mr-2" />
+              <label className="text-black">Semua</label>
+            </div>
+            <div className="flex items-center">
+              <input type="checkbox" className="w-4 h-4 border border-gray-400 mr-2" />
+              <label className="text-black">Non-stop</label>
+            </div>
+            <div className="flex items-center">
+              <input type="checkbox" className="w-4 h-4 border border-gray-400 mr-2" />
+              <label className="text-black">Hingga 1 perhentian</label>
+            </div>
+            <div className="flex items-center">
+              <input type="checkbox" className="w-4 h-4 border border-gray-400 mr-2" />
+              <label className="text-black">Hingga 2 perhentian</label>
+            </div>
+
+            <hr className="border-blue-200 my-4" />
+
+            {/* Durasi */}
+            <div className="mb-6">
+              <div className="flex justify-between items-center mb-2">
+                <label className="text-lg font-medium text-black">Durasi</label>
+                <span className="text-sm text-gray-500">Hingga 59 jam</span>
+              </div>
+              <input
+                type="range"
+                min="0"
+                max="59"
+                className="w-full h-2 bg-blue-400 rounded-full appearance-none"
+              />
+            </div>
+
+            {/* Hentikan Durasi */}
+            <div>
+              <div className="flex justify-between items-center mb-2">
+                <label className="text-lg font-medium text-black">Hentikan durasi</label>
+                <span className="text-sm text-gray-500">Hingga 25 jam</span>
+              </div>
+              <input
+                type="range"
+                min="0"
+                max="25"
+                className="w-full h-2 bg-blue-400 rounded-full appearance-none"
+              />
+            </div>
+
+            {/* Kelas Kabin */}
+            <div className="mb-6">
+              <h3 className="text-lg font-medium text-black mb-3">Kelas kabin</h3>
+              <div className="space-y-3">
+                {["Ekonomi", "Ekonomi Premium", "Bisnis", "Kelas Pertama"].map((kelas) => (
+                  <div key={kelas} className="flex items-center">
+                    <input type="checkbox" className="w-4 h-4 border border-gray-400 mr-2" />
+                    <label className="text-black">{kelas}</label>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <hr className="border-blue-200 my-4" />
+
+            {/* Maskapai */}
+            <div className="mb-4">
+              <h3 className="text-lg font-medium text-black mb-3">Maskapai</h3>
+              <div className="flex items-center mb-3">
+                <input type="checkbox" className="w-4 h-4 border border-gray-400 mr-2" />
+                <label className="text-black">Semua Maskapai</label>
+              </div>
+
+              <div className="space-y-3">
+                {/* Maskapai dengan logo */}
+                {[
+                  { name: "AirAsia Indonesia", logo: "/logos/airasia.png" },
+                  { name: "Batik Air Malaysia", logo: "/logos/batikair.png" },
+                  { name: "Garuda Indonesia", logo: "/logos/garuda.png" },
+                  { name: "Lion Air", logo: "/logos/lionair.png" },
+                  { name: "Malaysia Airlines", logo: "/logos/malaysia.png" },
+                  { name: "Super Air Jet", logo: "/logos/superairjet.png" },
+                ].map((maskapai) => (
+                  <div key={maskapai.name} className="flex items-center">
+                    <input type="checkbox" className="w-4 h-4 border border-gray-400 mr-2" />
+                    <img src={maskapai.logo} alt={maskapai.name} className="w-5 h-5 mr-2 object-contain" />
+                    <label className="text-black">{maskapai.name}</label>
+                  </div>
+                ))}
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+        <div className='flex flex-col w-[70%] gap-5'>
+          {/* penerbangan keberangkatan 1 */}
+          <div className=" max-w-md mx-auto pt-7 px-2 bg-[#EAF3FC] rounded-xl shadow-md overflow-hidden border border-gray-200">
+            <h2 className="font-semibold text-gray-800 text-lg">Lion Air, Batik Air Malaysia</h2>
+            <div className="px-6 py-4 bg-white rounded-xl">
+              <div className="flex items-center justify-between mb-2">
+                <div className=''>
+                  <span className="bg-[#D9D9D9] text-sm inline-block px-2 py-1 rounded text-gray-700 mb-2">Ekonomi</span>
+                  <p className="text-sm italic text-gray-500 mb-4">Keberangkatan : AirAsia</p>
+                </div>
+                <div className='flex flex-col items-center justify-end text-right'>
+                  <p className="text-[#FF9000] font-bold text-sm">Rp.4.540.000</p>
+                  <p className="text-sm italic text-gray-500 mb-4">1 Penumpang</p>
+                </div>
+              </div>
+
+              <div className="flex items-center justify-between p-4">
+                {/* Logo Maskapai */}
+                <img src="/logo-airasia.png" alt="AirAsia" className="h-6 mr-4" />
+
+                {/* Waktu & Bandara Keberangkatan */}
+                <div className="text-center">
+                  <p className="font-semibold text-lg">15.45</p>
+                  <p className="text-sm text-gray-500">BPN</p>
+                </div>
+
+                {/* Garis & Info Stop */}
+                <div className="flex flex-col items-center justify-center flex-1 px-4">
+                  <p className="text-xs text-gray-500">1 Stop</p>
+                  <div className="flex items-center w-full mt-1">
+                    <div className="h-0.5 bg-gray-300 w-full"></div>
+                    <svg
+                      className="w-4 h-4 text-gray-400 -ml-2"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M10.293 15.707a1 1 0 010-1.414L13.586 11H4a1 1 0 110-2h9.586l-3.293-3.293a1 1 0 111.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                </div>
+
+                {/* Waktu & Bandara Tujuan */}
+                <div className="text-center">
+                  <p className="font-semibold text-lg">18.45</p>
+                  <p className="text-sm text-gray-500">KUL</p>
+                </div>
+
+                {/* Tombol Pilih */}
+                <button className="bg-[#023E8A] hover:bg-blue-800 text-white font-semibold w-32 px-4 rounded-lg ml-4 shadow-md">
+                  Pilih
+                </button>
+              </div>
+
+              <hr className="mb-2" />
+              <div className="flex justify-between text-sm text-gray-600 mb-2">
+                <div className='flex flex-col'>
+                  <img src="" alt="" />
+                  <p>8 kg</p>
+                  <p className="text-gray-400">per penumpang</p>
+                </div>
+                <div>
+                  <a href="#" className="text-red-500 text-sm font-medium">Lihat detail</a>
+                </div>
+              </div>
+
+              <p className="text-sm text-gray-800 font-semibold mb-2">Keberangkatan, July 13</p>
+
+              <div className="flex items-start gap-4">
+                {/* Kolom waktu & garis */}
+                <div className="flex flex-col items-center text-xs text-gray-500">
+                  <p className="text-black font-medium text-sm">15.45</p>
+                  <p>July 13</p>
+
+                  {/* Icon Pesawat */}
+                  <div className="my-1 text-black">
+                    <i className="fas fa-plane text-sm"></i>
+                  </div>
+
+                  <div className="w-px h-8 bg-gray-300 my-1"></div>
+                  <p>3 Jam</p>
+                  <div className="w-px h-8 bg-gray-300 my-1"></div>
+
+                  {/* Icon Lokasi */}
+                  <div className="my-1 text-black">
+                    <i className="fas fa-location-dot text-sm"></i>
+                  </div>
+
+                  <p className="text-black font-medium text-sm">15.45</p>
+                  <p>July 13</p>
+                </div>
+
+                {/* Kolom konten */}
+                <div className="flex-1">
+                  {/* Tujuan */}
+                  <div className="mb-4">
+                    <p className="text-sm font-semibold text-gray-800">Kuala Lumpur</p>
+                    <p className="text-xs text-gray-500">Bandara International Kuala Lumpur (KUL)</p>
+                  </div>
+
+                  {/* Detail penerbangan */}
+                  <div className="p-2 bg-gray-100 rounded-full mb-4 text-xs text-gray-600 inline-flex items-center gap-2">
+                    <img src="/airasia-logo.png" alt="AirAsia" className="w-12 h-auto" /> {/* Ganti path sesuai kebutuhan */}
+                    <div>
+                      <p className="font-semibold">AirAsia, AK 483</p>
+                      <p>Ekonomi</p>
+                    </div>
+                  </div>
+
+                  {/* Asal */}
+                  <div>
+                    <p className="text-sm font-semibold text-gray-800">Balikpapan</p>
+                    <p className="text-xs text-gray-500">Bandara Sepinggan (BPN)</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          {/* penerbangan keberangkatan 2 */}
+          <div className=" max-w-md mx-auto pt-7 px-2 bg-[#EAF3FC] rounded-xl shadow-md overflow-hidden border border-gray-200">
+            <h2 className="font-semibold text-gray-800 text-lg">Lion Air, Batik Air Malaysia</h2>
+            <div className="px-6 py-4 bg-white rounded-xl">
+              <div className="flex items-center justify-between mb-2">
+                <div className=''>
+                  <span className="bg-[#D9D9D9] text-sm inline-block px-2 py-1 rounded text-gray-700 mb-2">Ekonomi</span>
+                  <p className="text-sm italic text-gray-500 mb-4">Keberangkatan : AirAsia</p>
+                </div>
+                <div className='flex flex-col items-center justify-end text-right'>
+                  <p className="text-[#FF9000] font-bold text-sm">Rp.4.540.000</p>
+                  <p className="text-sm italic text-gray-500 mb-4">1 Penumpang</p>
+                </div>
+              </div>
+
+              <div className="flex items-center justify-between p-4">
+                {/* Logo Maskapai */}
+                <img src="/logo-airasia.png" alt="AirAsia" className="h-6 mr-4" />
+
+                {/* Waktu & Bandara Keberangkatan */}
+                <div className="text-center">
+                  <p className="font-semibold text-lg">15.45</p>
+                  <p className="text-sm text-gray-500">BPN</p>
+                </div>
+
+                {/* Garis & Info Stop */}
+                <div className="flex flex-col items-center justify-center flex-1 px-4">
+                  <p className="text-xs text-gray-500">1 Stop</p>
+                  <div className="flex items-center w-full mt-1">
+                    <div className="h-0.5 bg-gray-300 w-full"></div>
+                    <svg
+                      className="w-4 h-4 text-gray-400 -ml-2"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M10.293 15.707a1 1 0 010-1.414L13.586 11H4a1 1 0 110-2h9.586l-3.293-3.293a1 1 0 111.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                </div>
+
+                {/* Waktu & Bandara Tujuan */}
+                <div className="text-center">
+                  <p className="font-semibold text-lg">18.45</p>
+                  <p className="text-sm text-gray-500">KUL</p>
+                </div>
+
+                {/* Tombol Pilih */}
+                <button className="bg-[#023E8A] hover:bg-blue-800 text-white font-semibold w-32 px-4 rounded-lg ml-4 shadow-md">
+                  Pilih
+                </button>
+              </div>
+
+              <hr className="mb-2" />
+              <div className="flex justify-between text-sm text-gray-600 mb-2">
+                <div className='flex flex-col'>
+                  <img src="" alt="" />
+                  <p>8 kg</p>
+                  <p className="text-gray-400">per penumpang</p>
+                </div>
+                <div>
+                  <a href="#" className="text-red-500 text-sm font-medium">Lihat detail</a>
+                </div>
+              </div>
+
+              <p className="text-sm text-gray-800 font-semibold mb-2">Keberangkatan, July 13</p>
+
+              <div className="flex items-start gap-4">
+                {/* Kolom waktu & garis */}
+                <div className="flex flex-col items-center text-xs text-gray-500">
+                  <p className="text-black font-medium text-sm">15.45</p>
+                  <p>July 13</p>
+
+                  {/* Icon Pesawat */}
+                  <div className="my-1 text-black">
+                    <i className="fas fa-plane text-sm"></i>
+                  </div>
+
+                  <div className="w-px h-8 bg-gray-300 my-1"></div>
+                  <p>3 Jam</p>
+                  <div className="w-px h-8 bg-gray-300 my-1"></div>
+
+                  {/* Icon Lokasi */}
+                  <div className="my-1 text-black">
+                    <i className="fas fa-location-dot text-sm"></i>
+                  </div>
+
+                  <p className="text-black font-medium text-sm">15.45</p>
+                  <p>July 13</p>
+                </div>
+
+                {/* Kolom konten */}
+                <div className="flex-1">
+                  {/* Tujuan */}
+                  <div className="mb-4">
+                    <p className="text-sm font-semibold text-gray-800">Kuala Lumpur</p>
+                    <p className="text-xs text-gray-500">Bandara International Kuala Lumpur (KUL)</p>
+                  </div>
+
+                  {/* Detail penerbangan */}
+                  <div className="p-2 bg-gray-100 rounded-full mb-4 text-xs text-gray-600 inline-flex items-center gap-2">
+                    <img src="/airasia-logo.png" alt="AirAsia" className="w-12 h-auto" /> {/* Ganti path sesuai kebutuhan */}
+                    <div>
+                      <p className="font-semibold">AirAsia, AK 483</p>
+                      <p>Ekonomi</p>
+                    </div>
+                  </div>
+
+                  {/* Asal */}
+                  <div>
+                    <p className="text-sm font-semibold text-gray-800">Balikpapan</p>
+                    <p className="text-xs text-gray-500">Bandara Sepinggan (BPN)</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          {/* penerbangan keberangkatan 3 */}
+          <div className=" max-w-md mx-auto pt-7 px-2 bg-[#EAF3FC] rounded-xl shadow-md overflow-hidden border border-gray-200">
+            <h2 className="font-semibold text-gray-800 text-lg">Lion Air, Batik Air Malaysia</h2>
+            <div className="px-6 py-4 bg-white rounded-xl">
+              <div className="flex items-center justify-between mb-2">
+                <div className=''>
+                  <span className="bg-[#D9D9D9] text-sm inline-block px-2 py-1 rounded text-gray-700 mb-2">Ekonomi</span>
+                  <p className="text-sm italic text-gray-500 mb-4">Keberangkatan : AirAsia</p>
+                </div>
+                <div className='flex flex-col items-center justify-end text-right'>
+                  <p className="text-[#FF9000] font-bold text-sm">Rp.4.540.000</p>
+                  <p className="text-sm italic text-gray-500 mb-4">1 Penumpang</p>
+                </div>
+              </div>
+
+              <div className="flex items-center justify-between p-4">
+                {/* Logo Maskapai */}
+                <img src="/logo-airasia.png" alt="AirAsia" className="h-6 mr-4" />
+
+                {/* Waktu & Bandara Keberangkatan */}
+                <div className="text-center">
+                  <p className="font-semibold text-lg">15.45</p>
+                  <p className="text-sm text-gray-500">BPN</p>
+                </div>
+
+                {/* Garis & Info Stop */}
+                <div className="flex flex-col items-center justify-center flex-1 px-4">
+                  <p className="text-xs text-gray-500">1 Stop</p>
+                  <div className="flex items-center w-full mt-1">
+                    <div className="h-0.5 bg-gray-300 w-full"></div>
+                    <svg
+                      className="w-4 h-4 text-gray-400 -ml-2"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M10.293 15.707a1 1 0 010-1.414L13.586 11H4a1 1 0 110-2h9.586l-3.293-3.293a1 1 0 111.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                </div>
+
+                {/* Waktu & Bandara Tujuan */}
+                <div className="text-center">
+                  <p className="font-semibold text-lg">18.45</p>
+                  <p className="text-sm text-gray-500">KUL</p>
+                </div>
+
+                {/* Tombol Pilih */}
+                <button className="bg-[#023E8A] hover:bg-blue-800 text-white font-semibold w-32 px-4 rounded-lg ml-4 shadow-md">
+                  Pilih
+                </button>
+              </div>
+
+              <hr className="mb-2" />
+              <div className="flex justify-between text-sm text-gray-600 mb-2">
+                <div className='flex flex-col'>
+                  <img src="" alt="" />
+                  <p>8 kg</p>
+                  <p className="text-gray-400">per penumpang</p>
+                </div>
+                <div>
+                  <a href="#" className="text-red-500 text-sm font-medium">Lihat detail</a>
+                </div>
+              </div>
+
+              <p className="text-sm text-gray-800 font-semibold mb-2">Keberangkatan, July 13</p>
+
+              <div className="flex items-start gap-4">
+                {/* Kolom waktu & garis */}
+                <div className="flex flex-col items-center text-xs text-gray-500">
+                  <p className="text-black font-medium text-sm">15.45</p>
+                  <p>July 13</p>
+
+                  {/* Icon Pesawat */}
+                  <div className="my-1 text-black">
+                    <i className="fas fa-plane text-sm"></i>
+                  </div>
+
+                  <div className="w-px h-8 bg-gray-300 my-1"></div>
+                  <p>3 Jam</p>
+                  <div className="w-px h-8 bg-gray-300 my-1"></div>
+
+                  {/* Icon Lokasi */}
+                  <div className="my-1 text-black">
+                    <i className="fas fa-location-dot text-sm"></i>
+                  </div>
+
+                  <p className="text-black font-medium text-sm">15.45</p>
+                  <p>July 13</p>
+                </div>
+
+                {/* Kolom konten */}
+                <div className="flex-1">
+                  {/* Tujuan */}
+                  <div className="mb-4">
+                    <p className="text-sm font-semibold text-gray-800">Kuala Lumpur</p>
+                    <p className="text-xs text-gray-500">Bandara International Kuala Lumpur (KUL)</p>
+                  </div>
+
+                  {/* Detail penerbangan */}
+                  <div className="p-2 bg-gray-100 rounded-full mb-4 text-xs text-gray-600 inline-flex items-center gap-2">
+                    <img src="/airasia-logo.png" alt="AirAsia" className="w-12 h-auto" /> {/* Ganti path sesuai kebutuhan */}
+                    <div>
+                      <p className="font-semibold">AirAsia, AK 483</p>
+                      <p>Ekonomi</p>
+                    </div>
+                  </div>
+
+                  {/* Asal */}
+                  <div>
+                    <p className="text-sm font-semibold text-gray-800">Balikpapan</p>
+                    <p className="text-xs text-gray-500">Bandara Sepinggan (BPN)</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
 
 
 
