@@ -38,13 +38,8 @@ const NavbarProfile = ({ isLoggedIn, userName }) => {
       </ul>
 
       <div className="flex items-center space-x-2 text-gray-800 font-semibold">
-        <Link
-          to="/profileemoney"
-          className="flex items-center space-x-2 hover:text-yellow-300"
-        >
-          <span>{isLoggedIn ? userName : "Guest"}</span>
-          <FaUserCircle size={24} />
-        </Link>
+        <span>{isLoggedIn ? userName : "Guest"}</span>
+        <FaUserCircle size={24} />
       </div>
     </nav>
   );
