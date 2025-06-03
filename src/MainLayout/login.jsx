@@ -14,6 +14,15 @@ const Login = () => {
     e.preventDefault();
 
     try {
+      Swal.fire({
+        title: "Mohon tunggu...",
+        text: "Sedang memproses login",
+        allowOutsideClick: false,
+        didOpen: () => {
+          Swal.showLoading();
+        },
+      });
+
       const res = await fetch("http://localhost:3000/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -21,6 +30,8 @@ const Login = () => {
       });
 
       const data = await res.json();
+
+      Swal.close(); // tutup loading
 
       if (!res.ok) throw new Error(data.message || "Login failed");
 
@@ -34,7 +45,7 @@ const Login = () => {
       localStorage.setItem("userId", userId);
       localStorage.setItem("email", data.user.email);
 
-      Swal.fire({
+      await Swal.fire({
         title: "Login Berhasil!",
         text: "Selamat datang kembali.",
         icon: "success",
@@ -48,6 +59,7 @@ const Login = () => {
         alert("Role tidak dikenali!");
       }
     } catch (err) {
+      Swal.close();
       Swal.fire({
         title: "Login Gagal",
         text: err.message || "Terjadi kesalahan saat login.",

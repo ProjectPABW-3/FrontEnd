@@ -43,6 +43,15 @@ export default function HotelPayment() {
 
   const handlePayment = async (pemesananId) => {
     try {
+      Swal.fire({
+        title: "Mohon tunggu...",
+        text: "Sedang memproses pembayaran",
+        allowOutsideClick: false,
+        didOpen: () => {
+          Swal.showLoading();
+        },
+      });
+
       const res = await fetch(
         `http://localhost:3000/api/pemesanan/${pemesananId}`,
         {
@@ -57,6 +66,8 @@ export default function HotelPayment() {
       );
 
       const data = await res.json();
+
+      Swal.close(); // tutup loading spinner
 
       if (res.ok) {
         await Swal.fire({
@@ -77,6 +88,7 @@ export default function HotelPayment() {
       }
     } catch (error) {
       console.error(error);
+      Swal.close(); // pastikan loading ditutup kalau error
       Swal.fire({
         icon: "error",
         title: "Terjadi Kesalahan",

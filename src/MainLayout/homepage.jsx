@@ -354,9 +354,9 @@ const Homepage = () => {
                 the signature Kölsch beer.
               </p>
               <Link to="/Artikel" className="hover:text-blue-500">
-              <button className="mt-3 bg-blue-900 text-white px-4 py-1 rounded">
-                READ MORE
-              </button>
+                <button className="mt-3 bg-blue-900 text-white px-4 py-1 rounded hover:cursor-pointer">
+                  READ MORE
+                </button>
               </Link>
             </div>
           </div>
@@ -374,9 +374,9 @@ const Homepage = () => {
                 innovation.
               </p>
               <Link to="/Artikel1" className="hover:text-blue-500">
-              <button className="mt-3 bg-blue-900 text-white px-4 py-1 rounded">
-                READ MORE
-              </button>
+                <button className="mt-3 bg-blue-900 text-white px-4 py-1 rounded hover:cursor-pointer">
+                  READ MORE
+                </button>
               </Link>
             </div>
           </div>
@@ -394,9 +394,9 @@ const Homepage = () => {
                 beauty in one destination.
               </p>
               <Link to="/Artikel2" className="hover:text-blue-500">
-              <button className="mt-3 bg-blue-900 text-white px-4 py-1 rounded">
-                READ MORE
-              </button>
+                <button className="mt-3 bg-blue-900 text-white px-4 py-1 rounded hover:cursor-pointer">
+                  READ MORE
+                </button>
               </Link>
             </div>
           </div>
@@ -414,10 +414,10 @@ const Homepage = () => {
                 desert views.
               </p>
               <Link to="/Artikel3" className="hover:text-blue-500">
-              <button className="mt-3 bg-blue-900 text-white px-4 py-1 rounded">
-                READ MORE
-              </button>
-               </Link>
+                <button className="mt-3 bg-blue-900 text-white px-4 py-1 rounded hover:cursor-pointer">
+                  READ MORE
+                </button>
+              </Link>
             </div>
           </div>
         </section>

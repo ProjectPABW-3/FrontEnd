@@ -1,6 +1,7 @@
+import { useState } from "react";
 import Footer from "../../components/footer/footer";
 import Sidebarprofile from "../../components/sidebarprofile/sidebarprofile";
-
+import Navbarprofile from "../../components/navbar/NavbarProfile";
 
 const Account = () => {
   const [fullName, setFullName] = useState("Ni Wayan Rini Kurniati");
@@ -40,50 +41,93 @@ const Account = () => {
             <div className="space-y-4">
               <div>
                 <label className="font-medium block">Full Name</label>
-                <input type="text" value={fullName} onChange={(e) => setFullName(e.target.value)} className="border rounded px-3 py-2 w-full mt-1" />
-                <p className="text-sm text-gray-500 mt-1">You full name will also appear as your profile name</p>
+                <input
+                  type="text"
+                  value={fullName}
+                  onChange={(e) => setFullName(e.target.value)}
+                  className="border rounded px-3 py-2 w-full mt-1"
+                />
+                <p className="text-sm text-gray-500 mt-1">
+                  You full name will also appear as your profile name
+                </p>
               </div>
 
               <div className="grid grid-cols-4 gap-4">
                 <div>
                   <label className="font-medium block">Gender</label>
-                  <input type="text" value={gender} onChange={(e) => setGender(e.target.value)} className="border rounded px-3 py-2 w-full mt-1" />
+                  <input
+                    type="text"
+                    value={gender}
+                    onChange={(e) => setGender(e.target.value)}
+                    className="border rounded px-3 py-2 w-full mt-1"
+                  />
                 </div>
                 <div>
                   <label className="font-medium block">Birthdate</label>
-                  <input type="text" value={birthDate} onChange={(e) => setBirthDate(e.target.value)} className="border rounded px-3 py-2 w-full mt-1" />
+                  <input
+                    type="text"
+                    value={birthDate}
+                    onChange={(e) => setBirthDate(e.target.value)}
+                    className="border rounded px-3 py-2 w-full mt-1"
+                  />
                 </div>
                 <div className="pt-6">
-                  <input type="text" value={birthMonth} onChange={(e) => setBirthMonth(e.target.value)} className="border rounded px-3 py-2 w-full" />
+                  <input
+                    type="text"
+                    value={birthMonth}
+                    onChange={(e) => setBirthMonth(e.target.value)}
+                    className="border rounded px-3 py-2 w-full"
+                  />
                 </div>
                 <div className="pt-6">
-                  <input type="text" value={birthYear} onChange={(e) => setBirthYear(e.target.value)} className="border rounded px-3 py-2 w-full" />
+                  <input
+                    type="text"
+                    value={birthYear}
+                    onChange={(e) => setBirthYear(e.target.value)}
+                    className="border rounded px-3 py-2 w-full"
+                  />
                 </div>
               </div>
 
               <div>
                 <label className="font-medium block">City of Residence</label>
-                <input type="text" value={city} onChange={(e) => setCity(e.target.value)} className="border rounded px-3 py-2 w-full mt-1" />
+                <input
+                  type="text"
+                  value={city}
+                  onChange={(e) => setCity(e.target.value)}
+                  className="border rounded px-3 py-2 w-full mt-1"
+                />
               </div>
 
               <div className="mt-6">
                 <label className="font-medium block">Email</label>
-                <p className="text-sm text-gray-500 mb-2">You may use 3 email(s)</p>
+                <p className="text-sm text-gray-500 mb-2">
+                  You may use 3 email(s)
+                </p>
                 <div className="border rounded p-3">
-                  <p className="text-sm mb-1">1. niwayanriniik@gmail.com <span className="text-green-600 font-semibold">Recipient for notifications</span></p>
+                  <p className="text-sm mb-1">
+                    1. niwayanriniik@gmail.com{" "}
+                    <span className="text-green-600 font-semibold">
+                      Recipient for notifications
+                    </span>
+                  </p>
                 </div>
               </div>
 
               <div className="mt-6">
                 <label className="font-medium block">Mobile Number</label>
-                <p className="text-sm text-gray-500 mb-2">You may use up to 3 mobile number(s)</p>
-                <button 
+                <p className="text-sm text-gray-500 mb-2">
+                  You may use up to 3 mobile number(s)
+                </p>
+                <button
                   className="text-black hover:underline text-sm font-bold mb-5"
                   onClick={() => setIsModalOpen(true)}
                 >
                   + Add Mobile Number
                 </button>
-                <button className="w-full bg-[#60b5ee] hover:bg-blue-600 text-white font-semibold py-2 rounded shadow">Save</button>
+                <button className="w-full bg-[#60b5ee] hover:bg-blue-600 text-white font-semibold py-2 rounded shadow">
+                  Save
+                </button>
               </div>
             </div>
           </div>
@@ -97,7 +141,9 @@ const Account = () => {
         <div className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-none bg-white/60">
           <div className="bg-white rounded shadow-lg p-6 w-1/3">
             <h2 className="text-lg font-bold mb-4">ADD PHONE NUMBER</h2>
-            <p className="text-sm text-gray-600 mb-2">Add your active phone number for login and receive notifications</p>
+            <p className="text-sm text-gray-600 mb-2">
+              Add your active phone number for login and receive notifications
+            </p>
             <label className="font-medium block mb-1">Phone</label>
             <input
               type="text"
@@ -107,8 +153,18 @@ const Account = () => {
               placeholder="Example: 812345678"
             />
             <div className="flex justify-between">
-              <button onClick={handleSavePhoneNumber} className="bg-blue-500 text-white px-4 py-2 rounded">Save</button>
-              <button onClick={handleCloseModal} className="bg-gray-300 px-4 py-2 rounded">Cancel</button>
+              <button
+                onClick={handleSavePhoneNumber}
+                className="bg-blue-500 text-white px-4 py-2 rounded"
+              >
+                Save
+              </button>
+              <button
+                onClick={handleCloseModal}
+                className="bg-gray-300 px-4 py-2 rounded"
+              >
+                Cancel
+              </button>
             </div>
           </div>
         </div>

@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { FaApple } from 'react-icons/fa';
-import { FcGoogle } from 'react-icons/fc';
+import { FaApple } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
 import { useNavigate } from "react-router-dom";
 import "../app.css";
-import Gambar1 from '../assets/Login/Gambar1.jpg';
-import Logo from '../assets/logo.svg';
+import Gambar1 from "../assets/Login/Gambar1.jpg";
+import Logo from "../assets/logo.svg";
+import Swal from "sweetalert2";
 
 const Signup = () => {
   const [name, setName] = useState("");
@@ -14,7 +15,17 @@ const Signup = () => {
 
   const handleSignup = async (e) => {
     e.preventDefault();
+
     try {
+      Swal.fire({
+        title: "Mohon tunggu...",
+        text: "Sedang memproses registrasi",
+        allowOutsideClick: false,
+        didOpen: () => {
+          Swal.showLoading();
+        },
+      });
+
       const res = await fetch("http://localhost:3000/api/auth/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -22,12 +33,26 @@ const Signup = () => {
       });
 
       const data = await res.json();
+
+      Swal.close(); // tutup loading
+
       if (!res.ok) throw new Error(data.message || "Register failed");
 
-      alert("Registrasi berhasil!");
+      await Swal.fire({
+        title: "Registrasi Berhasil!",
+        text: "Akun Anda telah dibuat.",
+        icon: "success",
+      });
+
       navigate("/login");
     } catch (err) {
-      alert("Registrasi gagal: " + err.message);
+      Swal.close(); // pastikan loading ditutup jika error
+      Swal.fire({
+        title: "Registrasi Gagal",
+        text: err.message || "Terjadi kesalahan saat registrasi.",
+        icon: "error",
+        confirmButtonText: "Coba Lagi",
+      });
     }
   };
 
@@ -63,7 +88,9 @@ const Signup = () => {
         {/* Form Fields */}
         <form className="w-full max-w-md space-y-4" onSubmit={handleSignup}>
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-1">Name</label>
+            <label className="block text-sm font-semibold text-gray-700 mb-1">
+              Name
+            </label>
             <input
               type="text"
               className="border p-2 rounded w-full"
@@ -74,7 +101,9 @@ const Signup = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-1">Email</label>
+            <label className="block text-sm font-semibold text-gray-700 mb-1">
+              Email
+            </label>
             <input
               type="email"
               className="border p-2 rounded w-full"
@@ -85,7 +114,9 @@ const Signup = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-1">Password</label>
+            <label className="block text-sm font-semibold text-gray-700 mb-1">
+              Password
+            </label>
             <input
               type="password"
               className="border p-2 rounded w-full"
@@ -96,13 +127,13 @@ const Signup = () => {
           </div>
 
           <label className="flex items-center text-sm text-gray-600">
-            <input type="checkbox" className="mr-2" required />
-            I agree to the privacy & policy
+            <input type="checkbox" className="mr-2" required />I agree to the
+            privacy & policy
           </label>
 
           <button
             type="submit"
-            className="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600 w-full font-bold"
+            className="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600 w-full font-bold hover:cursor-pointer"
           >
             Sign Up
           </button>
